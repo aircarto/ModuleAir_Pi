@@ -1,4 +1,4 @@
-<?php include '/var/www/html/CNRS/global.php'; ?> 
+<?php include '/var/www/html/ModuleAir_Pi/global.php'; ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
