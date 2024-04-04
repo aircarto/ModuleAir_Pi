@@ -1,13 +1,45 @@
 # ModuleAir_Pi
+
 ModuleAir running on a Raspberry Pi
+
+# Explications
+
+Le ModuleAir_Pi est un dispositif qui a vocation à déterminer l'impact de la qualité de l'air sur le ressenti, l'humeur, le bien-être etc
+Pour se faire, le ModuleAir_PI propose une à plusieurs question fermés auxquels l'utilisateur doit répondre. Suite à cela, l'utilisateur est dirigé sur une page où des données tel que la temperature, le taux de CO2, le taux d'humidité ou encore le nombre de PM sont affichées. 
 
 ## Hardware
 
-Liste des composants pour faire fonctionner le dispositif:
+- Les questions et les données sont affichés sur un écran 7 pouces 
+- La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL
+- Les PM sont mesurés par un capteur NextPM
+- Un raspberry PI 5 se charge de lancer les programmes, de receuillir les données, de faire le lien entre les capteurs et l'écran, d'afficher les questions etc
+- Le tout est disposé dans un boîtier (c.f partie Boitier)
 
 ## Software
 
-Liste des libraires pour faire fonctionner les scripts:
+Différents modules sont nécessaires au fonctionnement du ModuleAire_Pi : 
+- Apache2 pour le serveur web.
+- PHP pour le front-end (développement des pages de questions et de données). 
+- Python pour le back-end (développement des scripts d'instructions d'écriture et de lecture de données)
+- InfluxDB pour stocker les données recensées par les différents capteurs et sondes. 
+- Docker pour le fonctionnement d'InfluxDB.
+- Postgres pour stocker les réponses saisies par l'utilisateur (bien-être + données de temperature, pression etc au moment de sa réponse).
+
+Ces differents modules peuvent être installés avec les commandes suivantes : 
+- Apache2 : sudo apt install apache2
+- PHP : sudo apt install php
+- Python : sudo apt install python3
+- InfluxDB : sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+- Docker : https://docs.docker.com/engine/install/raspberry-pi-os/
+- Postgres : sudo apt install postgresql postgresql-contrib
+
+## Fichier
+
+- bme280.py : Permet le fonctionnement de la sonde BME280 et récolte les données de temperature, pression et humidité
+- Write_data_BME280.py : Inscrit les données recupérés par le BME280 sur InfluxDB
+- Read_data_***.py : Récupère les données depuis InfluxDB
+- global.php : Donne l'identifiant du capteur
+- reponse.php | index.html | style.css : affichent respectivement les pages web de questions et de données
 
 ## Boitier
 
@@ -15,4 +47,6 @@ Images et plans du boîtier
 
 ## TODO
 
-Liste des choses à faire
+- Réflexion autour de l'installation d'une deuxième sonde BME280 pour avoir une meilleure précision et limiter les potentielles anomalies
+- Installation du NextPM et de la sonde CO2
+- Réflexion autour du design final du boitier 
