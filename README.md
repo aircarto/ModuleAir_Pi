@@ -5,14 +5,14 @@ ModuleAir running on a Raspberry Pi
 
 Liste des composants pour faire fonctionner le dispositif:
 
-##Software
+## Software
 
 Liste des libraires pour faire fonctionner les scripts:
 
-##Boitier
+## Boitier
 
 Images et plans du boîtier
 
-##TODO
+## TODO
 
 Liste des choses à faire
