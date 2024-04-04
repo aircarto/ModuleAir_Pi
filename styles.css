@@ -1,0 +1,41 @@
+p {
+    font-size: 30px;  
+    margin-bottom: 20px; 
+}
+
+h1 {
+    font-size: 50px;  
+    margin-bottom: 20px; 
+}
+
+button {
+    padding: 50px 100px; 
+    font-size: 60px; 
+    border: none; 
+    border-radius: 5px; 
+    background-color: #007bff;
+    color: white; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    text-align: center; 
+    display: inline-block; 
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.button-container {
+    margin-top: 20px; 
+}
+
+button.large {
+    font-size: 45px;}
