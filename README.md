@@ -1,6 +1,6 @@
 # ModuleAir_Pi
 
-ModuleAir running on a Raspberry Pi
+ModuleAir-Pi est un projet porté par AirCarto : https://aircarto.fr/
 
 # Explications
 
@@ -9,10 +9,10 @@ Pour se faire, le ModuleAir_PI propose une à plusieurs question fermés auxquel
 
 ## Hardware
 
-- Les questions et les données sont affichés sur un écran 7 pouces 
-- La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL
-- Les PM sont mesurés par un capteur NextPM
 - Un raspberry PI 5 se charge de lancer les programmes, de receuillir les données, de faire le lien entre les capteurs et l'écran, d'afficher les questions etc
+- Les questions et les données sont affichés sur un écran tactile de 7 pouces de résolution 1024x600 
+- La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL
+- Les PM sont mesurés par un capteur NextPM, connecté sur un port USB avec un convertisseur CH340 
 - Le tout est disposé dans un boîtier (c.f partie Boitier)
 
 ## Software
@@ -28,10 +28,14 @@ Différents modules sont nécessaires au fonctionnement du ModuleAire_Pi :
 Ces differents modules peuvent être installés avec les commandes suivantes : 
 - Apache2 : sudo apt install apache2
 - PHP : sudo apt install php
+- Serial : pip install pyserial
+- Pip : sudo apt install python3-pip
 - Python : sudo apt install python3
-- InfluxDB : sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+- InfluxDB : sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - | pip install influxdb-client
 - Docker : https://docs.docker.com/engine/install/raspberry-pi-os/
 - Postgres : sudo apt install postgresql postgresql-contrib
+- Psycopg2 : pip install psycopg2-binary
+
 
 ## Fichier
 
@@ -43,10 +47,13 @@ Ces differents modules peuvent être installés avec les commandes suivantes :
 
 ## Boitier
 
-Images et plans du boîtier
+(Images/ModuleAir.jpg)
+(Images/Boitier.jpg)
+(Images/Raspberry.jpg)
 
 ## TODO
 
 - Réflexion autour de l'installation d'une deuxième sonde BME280 pour avoir une meilleure précision et limiter les potentielles anomalies
 - Installation du NextPM et de la sonde CO2
 - Réflexion autour du design final du boitier 
+- Brancher le ModuleAir avec une alimentation 5 Volt - 8 ampères pour répondre aux besoin du boîtier étant gourmand en énérgie

@@ -5,7 +5,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 
 token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="
 org = "AC"
-bucket = "Test"
+bucket = "CNRS"
 url="http://localhost:8087"
 
 client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
