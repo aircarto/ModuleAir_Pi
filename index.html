@@ -3,17 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question</title>
+    <title>Index</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="response-container">
         <h1>Question :</h1>
-        <link rel="stylesheet" href="styles.css">
-        <p>Vous sentez vous bien ?</p>
+        <p>Quel est votre sexe</p>
         <div class="button-container">
-            <button onclick="window.location.href='reponse.php?reponse=oui'">Oui</button>
-            <button onclick="window.location.href='reponse.php?reponse=non'">Non</button>
+            <button id="btn-oui" class="response-button" onclick="saveResponse('Homme')">Homme</button>
+            <button id="btn-non" class="response-button" onclick="saveResponse('Femme')">Femme</button>
         </div>
     </div>
+    
+    <div class="next-container">    
+        <button id="nextButton" class="next-button" onclick="goToNext()" disabled>Question Suivante</button>
+    </div>
+
+    <script>
+        var reponseSexe = null;
+    
+        function saveResponse(reponseSexeValue) {
+            reponseSexe = reponseSexeValue;  
+        var selectedButtonId = reponseSexe === 'Homme' ? 'btn-oui' : 'btn-non';
+        var otherButtonId = reponseSexe === 'Homme' ? 'btn-non' : 'btn-oui';
+
+        document.getElementById('nextButton').disabled = false;
+        document.getElementById(selectedButtonId).classList.add('selected');
+        document.getElementById(otherButtonId).classList.remove('selected');
+        }
+    
+        function goToNext() {
+            if(reponseSexe) {
+                window.location.href = 'question.html?reponseSexe=' + encodeURIComponent(reponseSexe);
+            } 
+        }
+    </script>
+    
+ 
+
 </body>
 </html>
+
+

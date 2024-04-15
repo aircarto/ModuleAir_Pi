@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="response-container">
+        <h1>Question :</h1>
+        <p>Vous sentez vous bien ?</p>
+        <div class="button-container">
+            <button id="btn-oui" class="response-button" onclick="saveResponse('oui')">Oui</button>
+            <button id="btn-non" class="response-button" onclick="saveResponse('non')">Non</button>
+        </div>
+    </div>
+    <div class="next-container">
+        <button class="back-button" onclick="window.location.href='index.html'">Retour en arrière</button>
+    </div>
+    
+    <div class="next-container">    
+        <button id="nextButton" class="next-button" onclick="goToNext()" disabled>Question Suivante</button>
+    </div>
+
+    <script>
+        var reponseBE = null; 
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const reponseSexe = urlParams.get('reponseSexe');
+    
+        function saveResponse(reponseBEValue) {
+            reponseBE = reponseBEValue;
+            document.getElementById('nextButton').disabled = false;
+            var buttons = document.getElementsByClassName('response-button');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('selected');
+            }
+            document.getElementById('btn-' + reponseBE).classList.add('selected');
+        }
+    
+
+
+        function goToNext() {
+            if(reponseBE) {
+                window.location.href = 'question2.html?reponseSexe=' + encodeURIComponent(reponseSexe) + '&reponseBE=' + encodeURIComponent(reponseBE);
+            } 
+        }
+    </script>
+</body>
+</html>

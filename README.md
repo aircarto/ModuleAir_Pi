@@ -11,7 +11,7 @@ Pour se faire, le ModuleAir_PI propose une à plusieurs question fermés auxquel
 
 - Un raspberry PI 5 se charge de lancer les programmes, de receuillir les données, de faire le lien entre les capteurs et l'écran, d'afficher les questions etc
 - Les questions et les données sont affichés sur un écran tactile de 7 pouces de résolution 1024x600 
-- La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL
+- La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL. La marge de précision des données est de 1°C
 - Les PM sont mesurés par un capteur NextPM, connecté sur un port USB avec un convertisseur CH340 
 - Le tout est disposé dans un boîtier (c.f partie Boitier)
 

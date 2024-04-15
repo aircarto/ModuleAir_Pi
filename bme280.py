@@ -24,8 +24,8 @@ from ctypes import c_short
 from ctypes import c_byte
 from ctypes import c_ubyte
 
-DEVICE = 0x76 # Default device I2C address
-
+DEVICE1 = 0x76 # Default device I2C address
+DEVICE2 = 0x77
 
 bus = smbus.SMBus(1) # Rev 2 Pi, Pi 2 & Pi 3 uses bus 1
                      # Rev 1 Pi uses bus 0
@@ -50,13 +50,13 @@ def getUChar(data,index):
   result =  data[index] & 0xFF
   return result
 
-def readBME280ID(addr=DEVICE):
+def readBME280ID(addr):
   # Chip ID Register Address
   REG_ID     = 0xD0
   (chip_id, chip_version) = bus.read_i2c_block_data(addr, REG_ID, 2)
   return (chip_id, chip_version)
 
-def readBME280All(addr=DEVICE):
+def readBME280All(addr):
   # Register Addresses
   REG_DATA = 0xF7
   REG_CONTROL = 0xF4
@@ -157,25 +157,16 @@ def readBME280All(addr=DEVICE):
   return temperature/100.0,pressure/100.0,humidity
 
 def main():
-
-  (chip_id, chip_version) = readBME280ID()
-  print( "Chip ID     :", chip_id)
-  print( "Version     :", chip_version)
-
-  temperature,pressure,humidity = readBME280All()
-
-  print( "Temperature : ", temperature, "C")
-def main():
-
-  (chip_id, chip_version) = readBME280ID()
+ for devices in [DEVICE1, DEVICE2]:
+  (chip_id, chip_version) = readBME280ID(devices)
+  print("Device Address:", hex(devices))
   #print( "Chip ID     :", chip_id)
   #print( "Version     :", chip_version)
-
-  temperature,pressure,humidity = readBME280All()
-
+  temperature,pressure,humidity = readBME280All(devices)
   #print( "Temperature : ", temperature, "C")
   #print("Pressure : ", pressure, "hPa")
   #print( "Humidity : ", humidity, "%")
   print("{Temperature:" + str(temperature) +",Pressure:" + str(pressure) + ", Humidity:" + str(humidity) +"}")
+
 if __name__=="__main__":
    main()
