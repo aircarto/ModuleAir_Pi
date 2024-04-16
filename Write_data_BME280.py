@@ -18,7 +18,7 @@ url="http://localhost:8087"
 # with open('device_id.txt', 'r') as file:
    # name = file.read().strip()
 
-name = CNRS_1
+name = "CNRS_1"
 
 DEVICE1 = 0x76
 DEVICE2 = 0x77
