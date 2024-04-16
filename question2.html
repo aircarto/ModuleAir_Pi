@@ -31,7 +31,7 @@
         function saveResponse(reponseAValue) {
             var tab = reponseA.indexOf(reponseAValue);
             if (tab > -1) {
-                reponseA.splice(index, 1);
+                reponseA.splice(index, 0);
                 document.getElementById('btn-' + reponseAValue).classList.remove('selected');
             } else {
                 reponseA.push(reponseAValue);
@@ -40,6 +40,7 @@
     
 
             document.getElementById('nextButton').disabled = reponseA.length === 0;
+            document.getElementById('btn-rien').disabled = reponseA.length >=1;
         }
     
         function goToReponse() {

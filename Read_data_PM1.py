@@ -15,7 +15,7 @@ query_api = client.query_api()
 
 query = """ from(bucket: "CNRS")
       |> range(start: -10)
-      |> filter(fn: (r) => r["_measurement"] == "Capteur_1")
+      |> filter(fn: (r) => r["_measurement"] == "CNRS_1")
       |> filter(fn: (r) => r["_field"] == "PM1")
       |> mean()"""
 

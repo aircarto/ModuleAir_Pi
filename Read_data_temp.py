@@ -15,7 +15,7 @@ query_api = client.query_api()
 query = """
     from(bucket: "CNRS")
       |> range(start: -10m)
-      |> filter(fn: (r) => r["_measurement"] == "Capteur_1" and (r["_field"] == "temperature1" or r["_field"] == "temperature2"))
+      |> filter(fn: (r) => r["_measurement"] == "CNRS_1" and (r["_field"] == "temperature1" or r["_field"] == "temperature2" or r["_field"] == "temperature3"))
       |> mean()
 """
 
@@ -30,6 +30,7 @@ for table in tables:
         valeurs.append(x)
 
 
-print(mean(valeurs))
-
+y = (mean(valeurs))
+z = round(y, 2)
+print(z)
 

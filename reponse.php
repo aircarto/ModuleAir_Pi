@@ -35,7 +35,7 @@
             $result = pg_query($conn, $query); pg_close($conn); ?> 
 
             <?php require __DIR__ .'/vendor/autoload.php';
-            $CNRS_endpoint = 'https://data.moduleair.fr/cnrs_biblio.php';
+            $CNRS_endpoint = 'https://data.moduleair.fr/cnrs_biblio/data_users.php';
             $headers = [
                 "Content-Type" => "application/json"];
             $data_CNRS = ["sensordatavalues" => [["mesure" => "temperature", "value" => $output_temp],["mesure" => "humidity", "value" => $output_hum],["mesure" => "pressure", "value" => $press],["mesure" => "reponse", "value" => $r],["mesure" => "date_reponse", "value" => $fullDate],["mesure" => "device", "value" => DEVICE_ID],["mesure" => "pm1", "value" => $output_PM1],["mesure" => "pm25", "value" => $output_PM25],["mesure" => "pm10", "value" => $output_PM10],["mesure" => "sexe", "value" => $rs]],];
