@@ -15,10 +15,10 @@ org = "AC"
 bucket = "CNRS"
 url="http://localhost:8087"
 
-# with open('device_id.txt', 'r') as file:
-   # name = file.read().strip()
+with open('device_id.txt', 'r') as file:
+   name = file.read().strip()
 
-name = "CNRS_1"
+#name = "CNRS_1"
 
 DEVICE1 = 0x76
 DEVICE2 = 0x77
@@ -54,7 +54,7 @@ point3 = Point(name) \
 write_api.write(bucket=bucket, org=org, record=[point1, point2,point3])
 
 
-url = 'https://webhook.site/4767a01a-0cc9-494a-a1f4-0860f9ce38af'
+urlp = 'https://webhook.site/4767a01a-0cc9-494a-a1f4-0860f9ce38af'
 
 data = {
     "Name" : name,
@@ -69,6 +69,6 @@ data = {
     "Humidity3": humidity3
 }
 
-x = requests.post(url, json = data)
+x = requests.post(urlp, json = data)
 
 

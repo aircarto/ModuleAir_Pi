@@ -11,7 +11,7 @@ Pour se faire, le ModuleAir_PI propose une à plusieurs question fermés auxquel
 
 - Un raspberry PI 5 se charge de lancer les programmes, de receuillir les données, de faire le lien entre les capteurs et l'écran, d'afficher les questions etc
 - Les questions et les données sont affichés sur un écran tactile de 7 pouces de résolution 1024x600 
-- La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL. La marge de précision des données est de 1°C
+- La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL. La marge de précision des données est de 1°C. Les sondes BME sont au nombre de 3. Afin de gagner en précision, le ModuleAir_Pi calcule la moyenne de temperature, de pression et d'humidité remontées par les 3 BME. Cela permet également de prévenir d'une eventuelle anomalie. Si une sonde est défailante, la comparaison avec les 2 autres permet de la trouver.  
 - Les PM sont mesurés par un capteur NextPM, connecté sur un port USB avec un convertisseur CH340 
 - Le tout est disposé dans un boîtier (c.f partie Boitier)
 
@@ -20,7 +20,7 @@ Pour se faire, le ModuleAir_PI propose une à plusieurs question fermés auxquel
 Différents modules sont nécessaires au fonctionnement du ModuleAire_Pi : 
 - Apache2 pour le serveur web.
 - PHP pour le front-end (développement des pages de questions et de données). 
-- Python pour le back-end (développement des scripts d'instructions d'écriture et de lecture de données)
+- Python pour le back-end (développement des scripts d'instructions d'écriture et de lecture de données).
 - InfluxDB pour stocker les données recensées par les différents capteurs et sondes. 
 - Docker pour le fonctionnement d'InfluxDB.
 - Postgres pour stocker les réponses saisies par l'utilisateur (bien-être + données de temperature, pression etc au moment de sa réponse).
@@ -39,11 +39,11 @@ Ces differents modules peuvent être installés avec les commandes suivantes :
 
 ## Fichier
 
-- bme280.py : Permet le fonctionnement de la sonde BME280 et récolte les données de temperature, pression et humidité
-- Write_data_BME280.py : Inscrit les données recupérés par le BME280 sur InfluxDB
-- Read_data_***.py : Récupère les données depuis InfluxDB
-- global.php : Donne l'identifiant du capteur
-- reponse.php | index.html | style.css : affichent respectivement les pages web de questions et de données
+- bme280.py : Permet le fonctionnement de la sonde BME280 et récolte les données de temperature, pression et humidité.
+- Write_data_***.py : Inscrit les données recupérés par les différents capteurs et sondes sur InfluxDB.
+- Read_data_***.py : Récupère les données depuis InfluxDB.
+- global.php : Donne l'identifiant du capteur (à modifier pour chaque boîtier utilisé). Le nom est repercuté dans "device_id.txt"
+- reponse.php | index.html | questionX.html | style.css : affichent respectivement les pages web de questions et de données
 
 ## Boitier
 
@@ -53,7 +53,6 @@ Ces differents modules peuvent être installés avec les commandes suivantes :
 
 ## TODO
 
-- Réflexion autour de l'installation d'une deuxième sonde BME280 pour avoir une meilleure précision et limiter les potentielles anomalies
-- Installation du NextPM et de la sonde CO2
+- Installation de la sonde CO2
 - Réflexion autour du design final du boitier 
 - Brancher le ModuleAir avec une alimentation 5 Volt - 8 ampères pour répondre aux besoin du boîtier étant gourmand en énérgie

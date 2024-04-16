@@ -5,6 +5,8 @@ import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
+with open('device_id.txt', 'r') as file:
+   name = file.read().strip()
 
 ser = serial.Serial(
     port='/dev/ttyUSB0',
@@ -35,6 +37,7 @@ while True:
         data = {
             'capteurID': 'nebuleairpro1',
             'sondeID':'USB2',
+            'Name' : name,
             'PM1': PM1,
             'PM25': PM25,
             'PM10': PM10,
@@ -62,10 +65,9 @@ while True:
 
 # Write Data on Influx
 
-# with open('device_id.txt', 'r') as file:
-    # name = file.read().strip()
 
-name = "CNRS_1"
+
+#name = "CNRS_1"
 
 token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="
 org = "AC"

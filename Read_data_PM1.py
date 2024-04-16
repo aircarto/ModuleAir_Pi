@@ -13,11 +13,17 @@ client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
 
 query_api = client.query_api()
 
-query = """ from(bucket: "CNRS")
-      |> range(start: -10)
-      |> filter(fn: (r) => r["_measurement"] == "CNRS_1")
-      |> filter(fn: (r) => r["_field"] == "PM1")
-      |> mean()"""
+
+with open('device_id.txt', 'r') as file:
+   name = file.read().strip()
+
+query = f"""
+from(bucket: "CNRS")
+    |> range(start: -10)
+    |> filter(fn: (r) => r["_measurement"] == "{name}")
+    |> filter(fn: (r) => r["_field"] == "PM1")
+    |> mean()
+"""
 
 tables = query_api.query(query, org="AC")
 
