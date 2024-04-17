@@ -57,6 +57,8 @@ Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être
 <<<<<<< HEAD
 =======
 ![alt text](Images/Boitier.jpg)
+![alt text](Images/ModuleAir.jpg)
+![alt text](Images/Raspberry.jpg)
 
 >>>>>>> d27e177 (maj)
 
