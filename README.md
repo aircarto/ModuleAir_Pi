@@ -55,6 +55,8 @@ Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être
 ## Boitier
 
 /var/www/html/ModuleAir_Pi/Images/Boitier.jpg
+![alt text](Images/Boitier.jpg)
+
 
 ## TODO
 
