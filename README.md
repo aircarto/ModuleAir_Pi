@@ -12,7 +12,7 @@ Pour se faire, le ModuleAir_PI propose une à plusieurs question fermés auxquel
 - Un raspberry PI 5 se charge de lancer les programmes, de receuillir les données, de faire le lien entre les capteurs et l'écran, d'afficher les questions etc
 - Les questions et les données sont affichés sur un écran tactile de 7 pouces de résolution 1024x600 
 - La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL. La marge de précision des données est de 1°C. Les sondes BME sont au nombre de 3. Afin de gagner en précision, le ModuleAir_Pi calcule la moyenne de temperature, de pression et d'humidité remontées par les 3 BME. Cela permet également de prévenir d'une eventuelle anomalie. Si une sonde est défailante, la comparaison avec les 2 autres permet de la trouver.  
-- Les PM sont mesurés par un capteur NextPM, connecté sur un port USB avec un convertisseur CH340 
+- Les PM sont mesurés par un capteur NextPM, connecté sur un port USB avec un convertisseur CH340. 
 - Le tout est disposé dans un boîtier (c.f partie Boitier)
 
 ## Software
@@ -44,6 +44,12 @@ Ces differents modules peuvent être installés avec les commandes suivantes :
 - Read_data_***.py : Récupère les données depuis InfluxDB.
 - global.php : Donne l'identifiant du capteur (à modifier pour chaque boîtier utilisé). Le nom est repercuté dans "device_id.txt"
 - reponse.php | index.html | questionX.html | style.css : affichent respectivement les pages web de questions et de données
+
+Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être modifier de la sorte afin d'automatiser les processus : 
+*/2 * * * * python /var/www/html/ModuleAir_Pi/Write_data_BME280.py
+*/2 * * * * python /var/www/html/ModuleAir_Pi/Write_data_NextPM.py
+* * * * * php /var/www/html/ModuleAir_Pi/global.php
+*/2 * * * * python /var/www/html/ModuleAir_Pi/Write_temp_core.py
 
 ## Boitier
 
