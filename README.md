@@ -49,7 +49,7 @@ Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être
 ```
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_data_BME280.py 
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_data_NextPM.py
-" * * * * * php /var/www/html/ModuleAir_Pi/global.php
+* * * * * php /var/www/html/ModuleAir_Pi/global.php
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_temp_core.py
 @reboot /home/airlab_test/Desktop/app.sh
 ```
