@@ -101,3 +101,7 @@ button.large {
     bottom: 20px;
     left: 20px;
 }
+
+body {
+    overflow: hidden; 
+  }
