@@ -13,6 +13,7 @@ Pour se faire, le ModuleAir_PI propose une à plusieurs question fermés auxquel
 - Les questions et les données sont affichés sur un écran tactile de 7 pouces de résolution 1024x600 
 - La temperature, l'humidité et la pression sont mesurés par une sonde BME280. Cette dernière est branchée au Raspberry sur les ports 3v-GND-SDA-SCL. La marge de précision des données est de 1°C. Les sondes BME sont au nombre de 3. Afin de gagner en précision, le ModuleAir_Pi calcule la moyenne de temperature, de pression et d'humidité remontées par les 3 BME. Cela permet également de prévenir d'une eventuelle anomalie. Si une sonde est défailante, la comparaison avec les 2 autres permet de la trouver.  
 - Les PM sont mesurés par un capteur NextPM, connecté sur un port USB avec un convertisseur CH340. 
+- Le CO2 est mesuré par une sonde mh-z19b
 - Le tout est disposé dans un boîtier (c.f partie Boitier)
 
 ## Software
@@ -52,6 +53,12 @@ Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être
 * * * * * php /var/www/html/ModuleAir_Pi/global.php
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_temp_core.py
 @reboot /home/airlab_test/Desktop/app.sh
+```
+
+Pour prévenir des éventuels switch de port de la sonde de CO2, il faut créer un fichier CO2.rules au niveau de /etc/udev/rules.d/ :
+
+```
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="C02" 
 ```
 
 ## Boitier
