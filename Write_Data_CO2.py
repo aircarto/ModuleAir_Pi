@@ -28,6 +28,8 @@ LOW = int.from_bytes(byte_data[3:4], byteorder='big')
 CO2 = HIGH * 256 + LOW
 print(CO2)
 
+ser.close()
+
 token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="
 org = "AC"
 bucket = "CNRS"
