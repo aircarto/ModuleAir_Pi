@@ -9,7 +9,7 @@ with open('device_id.txt', 'r') as file:
    name = file.read().strip()
 
 ser = serial.Serial(
-    port='/dev/ttyUSB0',
+    port='/dev/NextPM',
     baudrate=115200,
     parity=serial.PARITY_EVEN,
     stopbits=serial.STOPBITS_ONE,
