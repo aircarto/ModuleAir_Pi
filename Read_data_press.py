@@ -19,9 +19,9 @@ with open('device_id.txt', 'r') as file:
 
 query = f"""
 from(bucket: "CNRS")
-    |> range(start: -10)
+    |> range(start: -10m)
     |> filter(fn: (r) => r["_measurement"] == "{name}" and (r["_field"] == "pressure1" or r["_field"] == "pressure2" or r["_field"] == "pressure3"))
-      |> mean()
+    |> mean()
 """
 
 tables = query_api.query(query, org="AC")

@@ -17,7 +17,7 @@ with open('device_id.txt', 'r') as file:
 
 query = f"""
 from(bucket: "CNRS")
-    |> range(start: -10)
+    |> range(start: -10m)
     |> filter(fn: (r) => r["_measurement"] == "{name}" and (r["_field"] == "temperature1" or r["_field"] == "temperature2" or r["_field"] == "temperature3"))
     |> mean()
 """
