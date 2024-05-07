@@ -84,3 +84,14 @@ point = Point(name) \
 
 
 write_api.write(bucket=bucket, org=org, record=point)
+
+urlp = 'https://data.moduleair.fr/cnrs_biblio/data_cron.php'
+
+data = {
+    "Name" : name,
+    "PM1": PM1,
+    "PM25": PM25,
+    "PM10": PM10
+}
+
+x = requests.post(urlp, json = data)
