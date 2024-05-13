@@ -28,7 +28,7 @@ full_date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 rounded_pressure = round(float(pressure))
 
 
-conn = psycopg2.connect(host="172.16.13.90", dbname="cnrs", user="airlab_test", password="123plouf")
+conn = psycopg2.connect(host="localhost", dbname="cnrs", user="airlab_test", password="123plouf")
 cur = conn.cursor()
 
 
