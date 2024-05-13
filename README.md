@@ -55,10 +55,12 @@ Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être
 @reboot sudo php /var/www/html/ModuleAir_Pi/global.php
 ```
 
-Pour prévenir des éventuels switch de port de la sonde de CO2, il faut créer un fichier CO2.rules au niveau de /etc/udev/rules.d/ :
+Pour prévenir des éventuels switch de port de la sonde de CO2 et NextPM, il faut créer un fichier CO2.rules et un fichier PM.rules au niveau de /etc/udev/rules.d/ :
 
 ```
 SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="C02" 
+
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="NextPM"
 ```
 
 ## Boitier

@@ -14,31 +14,37 @@
             <div class="empty-block"></div>
         </div>
     </div>
-    <div class="progress-indicator" id="progress-indicator">3/3</div>
+
     <div class="response-container">
-        <h1>3. Usages et habitudes</h1>
+        <h1>Usages et habitudes</h1>
         <form onsubmit="return false;">
             <h2>Où passez-vous le plus de temps ?</h2>
             
             <label><input type="radio" name="location" value="rdc"> Rez-de-chaussée</label><br>
             <label><input type="radio" name="location" value="1"> 1er étage</label><br>
             <label><input type="radio" name="location" value="2"> 2ème étage</label><br>
-    
-            <button onclick="redirectBasedOnChoice()">Question Suivante</button>
+
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="redirectBasedOnChoice()">Question Suivante</button>
+            </div>
         </form>
+
+        <div class="next-container">
+            <button class="back-button" onclick="window.location.href='q4.html'">Retour en arrière</button>
+        </div>
     
         <script>
             function redirectBasedOnChoice() {
                 const choice = document.querySelector('input[name="location"]:checked').value;
                 switch (choice) {
                     case 'rdc':
-                        window.location.href = 'q8.html'; 
+                        window.location.href = 'q6.html'; 
                         break;
                     case '1':
-                        window.location.href = 'q9.html'; 
+                        window.location.href = 'q7.html'; 
                         break;
                     case '2':
-                        window.location.href = 'q10.html'; 
+                        window.location.href = 'q8.html'; 
                         break;
                     default:
                         alert('Veuillez sélectionner une option.');
