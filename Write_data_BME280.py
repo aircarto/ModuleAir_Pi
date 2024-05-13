@@ -54,7 +54,7 @@ point3 = Point(name) \
 write_api.write(bucket=bucket, org=org, record=[point1, point2,point3])
 
 
-urlp = 'https://webhook.site/4767a01a-0cc9-494a-a1f4-0860f9ce38af'
+urlp = 'https://data.moduleair.fr/cnrs_biblio/data_cron.php'
 
 data = {
     "Name" : name,

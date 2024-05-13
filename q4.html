@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+    <div class="progress-indicator" id="progress-indicator">3/3</div>
+    <div class="response-container">
+        <h1>Usages et Habitudes</h1>
+        <form onsubmit="return false;">
+            <h2>Comment venez-vous à la bibliothèque ?</h2>
+
+            
+            <div class="question">
+                <h1>En conditions "normales":</h1>
+                <label><input type="radio" name="normal" value="a_pied"> À pied</label>
+                <label><input type="radio" name="normal" value="a_velo"> À vélo</label>
+                <label><input type="radio" name="normal" value="transports"> En transport en commun</label>
+                <label><input type="radio" name="normal" value="voiture"> En voiture</label>
+            </div>
+            
+            <div class="question">
+                <h1>En cas de forte chaleur:</h1>
+                <label><input type="radio" name="chaleur" value="a_pied"> À pied</label>
+                <label><input type="radio" name="chaleur" value="a_velo"> À vélo</label>
+                <label><input type="radio" name="chaleur" value="transports"> En transport en commun</label>
+                <label><input type="radio" name="chaleur" value="voiture"> En voiture</label>
+            </div>
+    
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswers()" disabled>Question Suivante</button>
+            </div>
+        </form>
+        <div class="next-container">
+            <button class="back-button" onclick="window.location.href='q3.html'">Retour en arrière</button>
+        </div>
+        <script>
+            function submitAnswers() {
+                const normalMode = document.querySelector('input[name="normal"]:checked') ? document.querySelector('input[name="normal"]:checked').value : '';
+                const heatMode = document.querySelector('input[name="chaleur"]:checked') ? document.querySelector('input[name="chaleur"]:checked').value : '';
+                const urlParams = new URLSearchParams(window.location.search);
+                const reponseReason = urlParams.get('reponseReason');
+                const reponseTime = urlParams.get('reponseTime');
+                urlParams.set('normal', normalMode);
+                urlParams.set('chaleur', heatMode);
+    
+                window.location.href = `q5.html?${urlParams.toString()}`;
+            }
+        </script>
+    
+
+</body>
+</html>

@@ -16,48 +16,44 @@
     </div>
     <div class="progress-indicator" id="progress-indicator">3/3</div>
     <div class="response-container">
-        <h1>Question :</h1>
-        <p>Avez vous fait une activité avant de venir</p>
-        <div class="button-container">
-            <button id="btn-velo" class="choice-button" onclick="saveResponse('velo')">Vélo</button>
-            <button id="btn-marche" class="choice-button" onclick="saveResponse('marche')">Marche</button>
-            <button id="btn-sport" class="choice-button" onclick="saveResponse('sport')">Sport</button>
-            <button id="btn-rien" class="choice-button" onclick="saveResponse('rien')">Non</button>
-        </div>
+        <h1>Usages et Habitudes</h1>
+        <form onsubmit="return false;">
+
+            <h2>En général, pour quelle(s) raison(s) fréquentez-vous la bibliothèque ?</h2>
+            <label><input type="checkbox" name="reason" value="travailler" onchange="checkSelection()"> Travailler / étudier / lire</label><br>
+            <label><input type="checkbox" name="reason" value="livres" onchange="checkSelection()"> Emprunter des livres uniquement</label><br>
+            <label><input type="checkbox" name="reason" value="activites" onchange="checkSelection()"> Participer aux activités organisées par la bibliothèque</label><br>
+    
+            <h2>En général, quand fréquentez-vous la bibliothèque ?</h2>
+            <label><input type="checkbox" name="time" value="matin" onchange="checkSelection()"> En semaine le matin (9h - 13h)</label><br>
+            <label><input type="checkbox" name="time" value="aprem" onchange="checkSelection()"> En semaine l'après-midi (13h - 17h)</label><br>
+            <label><input type="checkbox" name="time" value="soiree" onchange="checkSelection()"> En semaine en soirée (17h - 21h)</label><br>
+            <label><input type="checkbox" name="time" value="samedi" onchange="checkSelection()"> Le samedi</label><br>
+            
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswers()" disabled>Question Suivante</button>
+            </div>
+        </form>
     </div>
     <div class="next-container">
         <button class="back-button" onclick="window.location.href='q2.html'">Retour en arrière</button>
     </div>
-    
-    <div class="next-container">    
-        <button id="nextButton" class="next-button" onclick="goToReponse()" disabled>Question Suivante</button>
-    </div>
 
     <script>
-        var reponseA = []; 
-    
-        function saveResponse(reponseAValue) {
-            var tab = reponseA.indexOf(reponseAValue);
-            if (tab > -1) {
-                reponseA.splice(index, 0);
-                document.getElementById('btn-' + reponseAValue).classList.remove('selected');
-            } else {
-                reponseA.push(reponseAValue);
-                document.getElementById('btn-' + reponseAValue).classList.add('selected');
-            }
-    
-
-            document.getElementById('nextButton').disabled = reponseA.length === 0;
-            document.getElementById('btn-rien').disabled = reponseA.length >=1;
+        function checkSelection() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const nextButton = document.getElementById('nextButton');
+            nextButton.disabled = !Array.from(checkboxes).some(checkbox => checkbox.checked);
         }
-    
-        function goToReponse() {
-            const reponsesA = reponseA.join(',');
-            if (reponsesA.length > 0) {
-                const urlParams = new URLSearchParams(window.location.search);
-                const reponseSexe = urlParams.get('reponseSexe');
-                const reponseBE = urlParams.get('reponseBE');
-                window.location.href = 'reponse.php?reponseSexe=' + encodeURIComponent(reponseSexe) + '&reponseBE=' + encodeURIComponent(reponseBE) + '&reponseA=' + encodeURIComponent(reponsesA);
+
+        function submitAnswers() {
+            const reasonCheckboxes = document.querySelectorAll('input[name="reason"]:checked');
+            const timeCheckboxes = document.querySelectorAll('input[name="time"]:checked');
+            const reponseReason = Array.from(reasonCheckboxes).map(cb => cb.value).join(',');
+            const reponseTime = Array.from(timeCheckboxes).map(cb => cb.value).join(',');
+
+            if(reponseReason && reponseTime) {
+                window.location.href = `q4.html?reponseReason=${encodeURIComponent(reponseReason)}&reponseTime=${encodeURIComponent(reponseTime)}`;
             }
         }
     </script>

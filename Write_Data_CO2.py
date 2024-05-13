@@ -44,3 +44,12 @@ point = Point(name) \
     .field("CO2", CO2)
 
 write_api.write(bucket=bucket, org=org, record=point)
+
+urlp = 'https://data.moduleair.fr/cnrs_biblio/data_cron.php'
+
+data = {
+    "Name" : name,
+    "CO2": CO2,
+}
+
+x = requests.post(urlp, json = data)
