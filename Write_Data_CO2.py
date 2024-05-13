@@ -49,6 +49,7 @@ urlp = 'https://data.moduleair.fr/cnrs_biblio/data_cron.php'
 
 data = {
     "Name" : name,
+    "Type": "CO2",
     "CO2": CO2,
 }
 

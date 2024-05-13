@@ -58,6 +58,7 @@ urlp = 'https://data.moduleair.fr/cnrs_biblio/data_cron.php'
 
 data = {
     "Name" : name,
+    "Type" : "temp_press",
     "Temperature1": temperature1,
     "Pressure1": pressure1,
     "Humidity1": humidity1,

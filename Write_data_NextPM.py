@@ -89,6 +89,7 @@ urlp = 'https://data.moduleair.fr/cnrs_biblio/data_cron.php'
 
 data = {
     "Name" : name,
+    "Type": "PM",
     "PM1": PM1,
     "PM25": PM25,
     "PM10": PM10
