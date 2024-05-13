@@ -50,9 +50,9 @@ Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être
 ```
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_data_BME280.py
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_data_NextPM.py
-*/20 * * * * sudo php /var/www/html/ModuleAir_Pi/global.php
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_temp_core.py
-@reboot /home/airlab_test/Desktop/app.sh
+@reboot /var/www/html/ModuleAir_Pi/app.sh
+@reboot sudo php /var/www/html/ModuleAir_Pi/global.php
 ```
 
 Pour prévenir des éventuels switch de port de la sonde de CO2, il faut créer un fichier CO2.rules au niveau de /etc/udev/rules.d/ :
