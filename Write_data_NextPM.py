@@ -5,7 +5,7 @@ import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-with open('device_id.txt', 'r') as file:
+with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
 
 ser = serial.Serial(

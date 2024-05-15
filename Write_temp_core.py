@@ -6,7 +6,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 import bme280
 import psycopg2
 
-with open('device_id.txt', 'r') as file:
+with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
 
 token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="

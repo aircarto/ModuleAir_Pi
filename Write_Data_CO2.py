@@ -1,12 +1,17 @@
 import serial
 import requests
 import json
+import logging
 import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-with open('device_id.txt', 'r') as file:
+with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
+
+logging.basicConfig(filename='/var/www/html/ModuleAir_Pi/logs/app.log', filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+#logging.warning(f"Getting CO2 for: {name}")
 
 ser = serial.Serial(
     port='/dev/C02',
@@ -26,7 +31,8 @@ HIGH = int.from_bytes(byte_data[2:3], byteorder='big')
 LOW = int.from_bytes(byte_data[3:4], byteorder='big')
 
 CO2 = HIGH * 256 + LOW
-print(CO2)
+print(str(CO2) + " PPM")
+print("Device: " + name)
 
 ser.close()
 

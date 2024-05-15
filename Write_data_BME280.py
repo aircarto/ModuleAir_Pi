@@ -15,7 +15,7 @@ org = "AC"
 bucket = "CNRS"
 url="http://localhost:8087"
 
-with open('device_id.txt', 'r') as file:
+with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
 
 #name = "CNRS_1"
