@@ -1,2 +1,4 @@
 vendor/
 __pycache__/
+global.php
+device_id.php
