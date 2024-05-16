@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informations personnelles</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>            
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>           
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+    <div class="response-container">
+        <h1>Informations personnelles</h1>
+        <form onsubmit="return false;">
+            <h2>Quel est votre genre ?</h2>
+            <div class="button-container1">
+                <button class="response-button1" data-value="homme" onclick="selectOption('genre', 'homme')">Homme</button>
+                <button class="response-button1" data-value="femme" onclick="selectOption('genre', 'femme')">Femme</button>
+                <button class="response-button1" data-value="non_binaire" onclick="selectOption('genre', 'non_binaire')">Non binaire</button>
+            </div>
+            <h2>Quelle est votre tranche d'âge ?</h2>
+            <div class="button-container1">
+                <button class="response-button1" data-value="moins_de_15" onclick="selectOption('age', 'moins_de_15')">Moins de 15 ans</button>
+                <button class="response-button1" data-value="15_29" onclick="selectOption('age', '15_29')">15 - 29 ans</button>
+                <button class="response-button1" data-value="30_44" onclick="selectOption('age', '30_44')">30 - 44 ans</button>
+                <button class="response-button1" data-value="45_60" onclick="selectOption('age', '45_60')">45 - 60 ans</button>
+                <button class="response-button1" data-value="plus_de_60" onclick="selectOption('age', 'plus_de_60')">Plus de 60 ans</button>
+            </div>
+
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswer()">Question Suivante</button>
+                <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let selections = { genre: '', age: '' };
+
+        function selectOption(category, value) {
+            selections[category] = value;
+            const buttons = document.querySelectorAll(`.response-button1[data-value][onclick*="${category}"]`);
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                if (button.getAttribute('data-value') === value) {
+                    button.classList.add('selected');
+                }
+            });
+        }
+
+        function submitAnswer() {
+            if (!selections.genre || !selections.age) {
+                alert('Veuillez sélectionner toutes les options.');
+                return;
+            }
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('genre', selections.genre);
+            urlParams.set('age', selections.age);
+            window.location.href =`q13.html?${urlParams.toString()}`;
+        }
+    </script>
+</body>
+</html>

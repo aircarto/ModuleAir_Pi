@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confort thermique</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>            
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>           
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+    <div class="response-container">
+        <h1>7. Confort thermique</h1>
+        <form onsubmit="return false;">
+            <h2>À ce moment précis vous diriez que vous avez...</h2>
+            <div class="button-container1">
+                <button class="response-button1" data-value="tres_chaud" onclick="selectOption('temperature', 'tres_chaud')">Très chaud</button>
+                <button class="response-button1" data-value="chaud" onclick="selectOption('temperature', 'chaud')">Chaud</button>
+                <button class="response-button1" data-value="legerement_chaud" onclick="selectOption('temperature', 'legerement_chaud')">Légèrement chaud</button>
+                <button class="response-button1" data-value="ni_chaud_ni_froid" onclick="selectOption('temperature', 'ni_chaud_ni_froid')">Ni chaud, ni froid</button>
+                <button class="response-button1" data-value="legerement_froid" onclick="selectOption('temperature', 'legerement_froid')">Légèrement froid</button>
+                <button class="response-button1" data-value="froid" onclick="selectOption('temperature', 'froid')">Froid</button>
+                <button class="response-button1" data-value="tres_froid" onclick="selectOption('temperature', 'tres_froid')">Très froid</button>
+            </div>
+            <h2>Vous trouvez cela...</h2>
+            <div class="button-container1">
+                <button class="response-button1" data-value="tres_confortable" onclick="selectOption('confort', 'tres_confortable')">Très confortable</button>
+                <button class="response-button1" data-value="confortable" onclick="selectOption('confort', 'confortable')">Confortable</button>
+                <button class="response-button1" data-value="inconfortable" onclick="selectOption('confort', 'inconfortable')">Inconfortable</button>
+                <button class="response-button1" data-value="tres_inconfortable" onclick="selectOption('confort', 'tres_inconfortable')">Très inconfortable</button>
+                <button class="response-button1" data-value="extremement_inconfortable" onclick="selectOption('confort', 'extremement_inconfortable')">Extrêmement inconfortable</button>
+            </div>
+
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswers()">Question Suivante</button>
+                <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let selections = { temperature: '', comfort: '' };
+
+        function selectOption(category, value) {
+            selections[category] = value;
+            const buttons = document.querySelectorAll(`.response-button1[data-value][onclick*='${category}']`);
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                if (button.getAttribute('data-value') === value) {
+                    button.classList.add('selected');
+                }
+            });
+        }
+        function submitAnswers() {
+            if (!selections.confort || !selections.temperature) {
+                alert('Veuillez sélectionner toutes les options.');
+                return;
+            }
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('confort', selections.confort);
+            urlParams.set('temperature', selections.temperature);
+            window.location.href = `q14.html?${urlParams.toString()}`;
+        }
+    </script>
+</body>
+</html>

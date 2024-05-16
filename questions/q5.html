@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>            
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>           
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+
+    <div class="response-container">
+        <h1>Usages et habitudes</h1>
+        <form onsubmit="return false;">
+            <h2>Où passez-vous le plus de temps ?</h2>
+            <div class="button-container1">
+                <button class="response-button1" data-value="rdc" onclick="selectOption('rdc')">Rez-de-chaussée</button>
+                <button class="response-button1" data-value="1" onclick="selectOption('1')">1er étage</button>
+                <button class="response-button1" data-value="2" onclick="selectOption('2')">2ème étage</button>
+            </div>
+
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="redirectBasedOnChoice()">Question Suivante</button>
+            </div>
+        </form>
+
+        <div class="next-container">
+            <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedOption = '';
+
+        function selectOption(value) {
+            selectedOption = value;
+            const buttons = document.querySelectorAll('.response-button1');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                if (button.getAttribute('data-value') === value) {
+                    button.classList.add('selected');
+                }
+            });
+        }
+
+        function redirectBasedOnChoice() {
+            if (selectedOption === '') {
+                alert('Veuillez sélectionner une option.');
+                return;
+            }
+            const urlMap = {
+                'rdc': 'q6.html',
+                '1': 'q7.html',
+                '2': 'q8.html'
+            };
+            const existingParams = new URLSearchParams(window.location.search);
+            existingParams.set('floor', selectedOption);  
+            const targetUrl = `${urlMap[selectedOption]}?${existingParams.toString()}`;
+            window.location.href = targetUrl;
+        }
+    </script>
+</body>
+</html>

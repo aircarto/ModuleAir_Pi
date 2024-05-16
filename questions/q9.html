@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usages et habitudes</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>            
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>           
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+    <div class="response-container">
+        <h1>Usages et habitudes</h1>
+        <h2>Comment qualifieriez vous la bibliothèque si vous deviez y rester de façon prolongée ?  </h2>
+        <form onsubmit="return false;">
+            <div class="button-container1">
+                <button class="response-button1" data-value="tres_confortable" onclick="selectOption('tres_confortable')">Très confortable</button>
+                <button class="response-button1" data-value="confortable" onclick="selectOption('confortable')">Confortable</button>
+                <button class="response-button1" data-value="inconfortable" onclick="selectOption('inconfortable')">Inconfortable</button>
+                <button class="response-button1" data-value="tres_inconfortable" onclick="selectOption('tres_inconfortable')">Très inconfortable</button>
+                <button class="response-button1" data-value="extremement_inconfortable" onclick="selectOption('extremement_inconfortable')">Extrêmement inconfortable</button>
+            </div>
+
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswer()">Question Suivante</button>
+                <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let selectedComfort = '';
+
+        function selectOption(value) {
+            selectedComfort = value;
+            const buttons = document.querySelectorAll('.response-button1');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                if (button.getAttribute('data-value') === value) {
+                    button.classList.add('selected');
+                }
+            });
+        }
+
+        function submitAnswer() {
+            if (selectedComfort === '') {
+                alert('Veuillez sélectionner une option.');
+                return;
+            }
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('comfort', selectedComfort);
+            window.location.href = `q10.html?${urlParams.toString()}`;
+        }
+    </script>
+</body>
+</html>
