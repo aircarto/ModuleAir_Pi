@@ -9,7 +9,7 @@
 <body>
 <div class="response-container">
         <h1>Réponse :</h1>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="../styles.css">
         <p>
         <?php
 
@@ -21,12 +21,12 @@
             echo "Vous avez fait : " . htmlspecialchars($reponsesA); ?>
 
         </p>
-            <p>La temperature est de <?php $pythonscript_temp = "/var/www/html/ModuleAir_Pi/Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; ?> °C</p>
-            <p>Le taux d'humidité est de <?php $pythonscript_hum = "/var/www/html/ModuleAir_Pi/Read_data_hum.py"; $output_hum = shell_exec('python ' . $pythonscript_hum ); echo $output_hum; ?> %</p>
-            <p>La temperature est de <?php $pythonscript_press = "/var/www/html/ModuleAir_Pi/Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); echo $output_press; ?> hPa</p>
-            <?php $pythonscript_PM1 = "/var/www/html/ModuleAir_Pi/Read_data_PM1.py"; $output_PM1 = shell_exec('python ' . $pythonscript_PM1 );?>
-            <?php $pythonscript_PM25 = "/var/www/html/ModuleAir_Pi/Read_data_PM25.py"; $output_PM25 = shell_exec('python ' . $pythonscript_PM25 );?>
-            <?php $pythonscript_PM10 = "/var/www/html/ModuleAir_Pi/Read_data_PM10.py"; $output_PM10 = shell_exec('python ' . $pythonscript_PM10 );?>
+            <p>La temperature est de <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; ?> °C</p>
+            <p>Le taux d'humidité est de <?php $pythonscript_hum = "Read_data_hum.py"; $output_hum = shell_exec('python ' . $pythonscript_hum ); echo $output_hum; ?> %</p>
+            <p>La temperature est de <?php $pythonscript_press = "Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); echo $output_press; ?> hPa</p>
+            <?php $pythonscript_PM1 = "Read_data_PM1.py"; $output_PM1 = shell_exec('python ' . $pythonscript_PM1 );?>
+            <?php $pythonscript_PM25 = "Read_data_PM25.py"; $output_PM25 = shell_exec('python ' . $pythonscript_PM25 );?>
+            <?php $pythonscript_PM10 = "Read_data_PM10.py"; $output_PM10 = shell_exec('python ' . $pythonscript_PM10 );?>
             <?php date_default_timezone_set('Europe/Paris'); $t = time(); $fullDate = date("Y-m-d H:i:s", $t); 
             $r= $_GET["reponseBE"]; $rs= $_GET["reponseSexe"]; $reponsesA = isset($_GET['reponseA']) ? explode(',', $_GET['reponseA']) : []; $reponsesAC = implode(',', $reponsesA);?>
             <?php $press = round($output_press); ?>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Q6</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <h1>Choisissez la section où vous passez le plus de temps :</h1>
+    <div class="image-container">
+        <img src= 1.png style="width: 40%;">
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>            
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>           
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+    <div class="response-container">
+        
+        <form onsubmit="return false;">
+            <div class="button-container2">
+                <button class="response-button2" data-value="1A" onclick="selectOption('1A')">Section 1A</button>
+                <button class="response-button2" data-value="1B" onclick="selectOption('1B')">Section 1B</button>
+                <button class="response-button2" data-value="1C" onclick="selectOption('1C')">Section 1C</button>
+                <button class="response-button2" data-value="1D" onclick="selectOption('1D')">Section 1D</button>
+            </div>
+
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswer()">Question Suivante</button>
+                <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let selectedSection = '';
+
+        function selectOption(value) {
+            selectedSection = value;
+            const buttons = document.querySelectorAll('.response-button2');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                if (button.getAttribute('data-value') === value) {
+                    button.classList.add('selected');
+                }
+            });
+        }
+
+        function submitAnswer() {
+    if (selectedSection === '') {
+        alert('Veuillez sélectionner une section.');
+        return;
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('selectedSection', selectedSection);
+    window.location.href = `q9.html?${urlParams.toString()}`;
+}
+</script>
+</body>
+</html>

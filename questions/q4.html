@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>            
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>           
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+    <div class="response-container">
+        <h1>Usages et Habitudes</h1>
+        <form onsubmit="return false;">
+            <h2>Comment venez-vous à la bibliothèque ?</h2>
+            <div class="question">
+                <h3>En conditions "normales":</h3>
+                <div class="button-container">
+                    <button class="response-button1" data-category="normal" data-value="pied" onclick="selectOption('pied', 'normal')">À pied</button>
+                    <button class="response-button1" data-category="normal" data-value="velo" onclick="selectOption('velo', 'normal')">À vélo</button>
+                    <button class="response-button1" data-category="normal" data-value="transports" onclick="selectOption('transports', 'normal')">En transport en commun</button>
+                    <button class="response-button1" data-category="normal" data-value="voiture" onclick="selectOption('voiture', 'normal')">En voiture</button>
+                </div>
+            </div>
+            <div class="question">
+                <h3>En cas de forte chaleur:</h3>
+                <div class="button-container">
+                    <button class="response-button1" data-category="chaleur" data-value="pied" onclick="selectOption('pied', 'chaleur')">À pied</button>
+                    <button class="response-button1" data-category="chaleur" data-value="velo" onclick="selectOption('velo', 'chaleur')">À vélo</button>
+                    <button class="response-button1" data-category="chaleur" data-value="transports" onclick="selectOption('transports', 'chaleur')">En transport en commun</button>
+                    <button class="response-button1" data-category="chaleur" data-value="voiture" onclick="selectOption('voiture', 'chaleur')">En voiture</button>
+                </div>
+            </div>
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswers()">Question Suivante</button>
+            </div>
+        </form>
+        <div class="next-container">
+            <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+        </div>
+    </div>
+
+    <script>
+        let selections = {
+            normal: new Set(),
+            chaleur: new Set()
+        };
+    
+       
+        window.onload = function() {
+            const existingParams = new URLSearchParams(window.location.search);
+            document.getElementById('nextButton').addEventListener('click', function() {
+                submitAnswers(existingParams);
+            });
+        };
+    
+        function selectOption(value, category) {
+            let allButtons = document.querySelectorAll(`button[data-category='${category}']`);
+            allButtons.forEach(btn => {
+                if (btn.dataset.value === value) {
+                    if (selections[category].has(value)) {
+                        selections[category].delete(value);
+                        btn.classList.remove('selected');
+                    } else {
+                        selections[category].clear(); 
+                        allButtons.forEach(b => b.classList.remove('selected'));
+                        selections[category].add(value);
+                        btn.classList.add('selected');
+                    }
+                }
+            });
+            checkSelection();
+        }
+    
+        function checkSelection() {
+            const nextButton = document.getElementById('nextButton');
+            nextButton.disabled = selections.normal.size === 0 || selections.chaleur.size === 0;
+        }
+    
+        function submitAnswers(existingParams) {
+            const normalMode = Array.from(selections.normal).join(',');
+            const heatMode = Array.from(selections.chaleur).join(',');
+            
+            
+            existingParams.set('normal', encodeURIComponent(normalMode));
+            existingParams.set('chaleur', encodeURIComponent(heatMode));
+    
+            
+            window.location.href = `q5.html?${existingParams.toString()}`;
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>            
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>           
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+
+    <div class="response-container">
+        <h1>Êtes-vous déjà venu.e à la bibliothèque spécifiquement pour vous abriter de la chaleur ?</h1>
+        <form onsubmit="return false;">
+            <div class="button-container1">
+                <button class="response-button1" data-value="jamais" onclick="selectOption('jamais')">Jamais</button>
+                <button class="response-button1" data-value="au_moins_une_fois" onclick="selectOption('au_moins_une_fois')">Au moins une fois</button>
+                <button class="response-button1" data-value="plus_dune_fois" onclick="selectOption('plus_dune_fois')">Plus d'une fois</button>
+                <button class="response-button1" data-value="souvent" onclick="selectOption('souvent')">Souvent</button>
+                <button class="response-button1" data-value="regulierement" onclick="selectOption('regulierement')">Régulièrement</button>
+            </div>
+
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswer()">Question Suivante</button>
+                <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let selectedOption = '';
+
+        function selectOption(value) {
+            selectedOption = value;
+            const buttons = document.querySelectorAll('.response-button1');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                if (button.getAttribute('data-value') === value) {
+                    button.classList.add('selected');
+                }
+            });
+        }
+
+        function submitAnswer() {
+            if (selectedOption === '') {
+                alert('Veuillez sélectionner une option.');
+                return;
+            }
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('shelter_from_heat', selectedOption);
+            window.location.href = `q11.html?${urlParams.toString()}`;
+        }
+    </script>
+</body>
+</html>

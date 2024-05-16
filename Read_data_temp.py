@@ -12,7 +12,7 @@ url="http://localhost:8087"
 client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
 query_api = client.query_api()
 
-with open('device_id.txt', 'r') as file:
+with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
 
 query = f"""

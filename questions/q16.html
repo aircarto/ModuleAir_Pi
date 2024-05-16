@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confort thermique supplémentaire</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>            
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>           
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+    <div class="response-container">
+        <h1>9. Confort thermique</h1>
+        <form onsubmit="return false;">
+            <h2>Y a-t-il des choses que vous souhaitez partager sur la qualité de l'air de la pièce où vous vous trouvez ?</h2>
+            <textarea id="otherSources" rows="4" cols="50" placeholder="Entrez votre réponse"></textarea>
+            
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswers()">Question Suivante</button>
+                <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitAnswers() {
+            const otherSources = document.getElementById('otherSources').value.trim();
+            if (!otherSources) {
+                alert('Veuillez entrer une réponse ou indiquer "Non" si aucune autre source.');
+                return;
+            }
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('other_thermal_sources', otherSources);
+            window.location.href = `q17.html?${urlParams.toString()}`;
+        }
+    </script>
+</body>
+</html>

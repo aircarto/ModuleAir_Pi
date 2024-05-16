@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confort thermique - Tenue</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+        </div>
+    </div>
+    <div class="response-container">
+        <h1>11. Confort thermique</h1>
+        <form onsubmit="return false;">
+            <h2>Avez-vous l'impression que votre tenue est adaptée à la température actuelle ?</h2>
+            <div class="button-container1">
+                <button class="response-button1" data-value="adaptée" onclick="selectOption('clothing_fit', 'adaptée')">Adaptée</button>
+                <button class="response-button1" data-value="inadaptée" onclick="selectOption('clothing_fit', 'inadaptée')">Inadaptée</button>
+                <button class="response-button1" data-value="je_ne_sais_pas" onclick="selectOption('clothing_fit', 'je_ne_sais_pas')">Je ne sais pas</button>
+            </div>
+            <div class="next-container">
+                <button id="nextButton" class="next-button" onclick="submitAnswer()">Soumettre Réponse</button>
+                <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let selection = '';
+
+        function selectOption(category, value) {
+            selection = value;
+            const buttons = document.querySelectorAll(`.response-button1`);
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+                if (button.getAttribute('data-value') === value) {
+                    button.classList.add('selected');
+                }
+            });
+        }
+
+        function submitAnswer() {
+            if (!selection) {
+                alert('Veuillez sélectionner une option.');
+                return;
+            }
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('clothing_fit', selection);
+            window.location.href = `../reponse.php?${urlParams.toString()}`;
+        }
+    </script>
+</body>
+</html>

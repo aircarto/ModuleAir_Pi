@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confort thermique</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>            
+            <div class="filled-block"></div>
+            <div class="filled-block"></div>           
+            <div class="filled-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+            <div class="empty-block"></div>
+        </div>
+    </div>
+    <div class="progress-indicator" id="progress-indicator">14/15</div>
+    <div class="response-container">
+        <h1>8. Confort thermique</h1>
+        <form onsubmit="return false;">
+            <h2>Ressentez-vous des courants d'air dans la pièce où vous vous trouvez ?</h2>
+            <div class="button-container1">
+                <button class="response-button1" data-value="oui" onclick="selectOption('air_flow', 'oui')">Oui</button>
+                <button class="response-button1" data-value="non" onclick="selectOption('air_flow', 'non')">Non</button>
+            </div>
+            <div id="detailOptions" style="display:none;">
+                <h3>Si oui, à quel(s) niveau(x) ?</h3>
+                <div class="button-container1">
+                    <button class="response-button1" data-value="visage" onclick="selectOption('air_detail', 'visage')">Visage</button>
+                    <button class="response-button1" data-value="buste" onclick="selectOption('air_detail', 'buste')">Buste</button>
+                    <button class="response-button1" data-value="cou_nuque" onclick="selectOption('air_detail', 'cou_nuque')">Cou, nuque</button>
+                    <button class="response-button1" data-value="jambes_chevilles_pieds" onclick="selectOption('air_detail', 'jambes_chevilles_pieds')">Jambes, chevilles, pieds</button>
+                    <button class="response-button1" data-value="autre" onclick="selectOption('air_detail', 'autre')">Autre</button>
+                </div>
+            </div>
+            <h2>Vous trouvez cela...</h2>
+            <div class="button-container1">
+                <button class="response-button1" data-value="tres_confortable" onclick="selectOption('comfort', 'tres_confortable')">Très confortable</button>
+                <button class="response-button1" data-value="confortable" onclick="selectOption('comfort', 'confortable')">Confortable</button>
+                <button class="response-button1" data-value="inconfortable" onclick="selectOption('comfort', 'inconfortable')">Inconfortable</button>
+                <button class="response-button1" data-value="tres_inconfortable" onclick="selectOption('comfort', 'tres_inconfortable')">Très inconfortable</button>
+                <button class="response-button1" data-value="extremement_inconfortable" onclick="selectOption('comfort', 'extremement_inconfortable')">Extrêmement inconfortable</button>
+            </div>
+
+            <div class="next-container">    
+                <button id="nextButton" class="next-button" onclick="submitAnswers()">Question Suivante</button>
+                <button class="back-button" onclick="window.history.back()">Retour en arrière</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+    let selections = { air_flow: '', air_detail: [], comfort: '' };
+
+    function selectOption(category, value) {
+        const categoryButtons = document.querySelectorAll(`.response-button1[data-value][onclick*='${category}']`);
+        categoryButtons.forEach(button => button.classList.remove('selected'));
+
+        if (category === 'air_detail' && value) {
+            const index = selections.air_detail.indexOf(value);
+            if (index > -1) {
+                selections.air_detail.splice(index, 1); 
+            } else {
+                selections.air_detail.push(value); 
+            }
+            categoryButtons.forEach(button => {
+                if (selections.air_detail.includes(button.getAttribute('data-value'))) {
+                    button.classList.add('selected');
+                }
+            });
+        } else {
+            selections[category] = value;
+            document.querySelector(`.response-button1[data-value='${value}'][onclick*='${category}']`).classList.add('selected');
+            if (category === 'air_flow' && value === 'oui') {
+                document.getElementById('detailOptions').style.display = 'block';
+            } else if (category === 'air_flow' && value === 'non') {
+                document.getElementById('detailOptions').style.display = 'none';
+                selections.air_detail = []; 
+            }
+        }
+    }
+
+    function submitAnswers() {
+        if (!selections.air_flow) {
+            alert('Veuillez indiquer si vous ressentez des courants d\'air.');
+            return;
+        }
+        if (selections.air_flow === 'oui' && selections.air_detail.length === 0) {
+            alert('Veuillez spécifier où vous ressentez des courants d\'air.');
+            return;
+        }
+        if (!selections.comfort) {
+            alert('Veuillez indiquer votre niveau de confort.');
+            return;
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('air_flow', selections.air_flow);
+        if (selections.air_flow === 'oui') {
+            urlParams.set('air_detail', selections.air_detail.join(','));
+        }
+        urlParams.set('comfort', selections.comfort);
+        window.location.href = `q15.html?${urlParams.toString()}`;
+    }
+</script>
+
+</body>
+</html>
