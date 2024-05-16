@@ -31,9 +31,9 @@
         <form onsubmit="return false;">
             <h2>En général, pour quelle(s) raison(s) fréquentez-vous la bibliothèque ?</h2>
             <div class="button-container1">
-                    <button class="response-button1" data-category="reason" data-value="travailler" onclick="selectOption('travailler', 'reason')">Travailler / étudier / lire</button>
-                    <button class="response-button1" data-category="reason" data-value="livres" onclick="selectOption('livres', 'reason')">Emprunter des livres uniquement</button>
-                    <button class="response-button1" data-category="reason" data-value="activites" onclick="selectOption('activites', 'reason')">Participer aux activités organisées par la bibliothèque</button>
+                    <button class="response-button1" data-category="r1" data-value="travailler" onclick="selectOption('travailler', 'r1')">Travailler / étudier / lire</button>
+                    <button class="response-button1" data-category="r1" data-value="livres" onclick="selectOption('livres', 'r1')">Emprunter des livres uniquement</button>
+                    <button class="response-button1" data-category="r1" data-value="activites" onclick="selectOption('activites', 'r1')">Participer aux activités organisées par la bibliothèque</button>
                 </div>
                 
                 <p></p>
@@ -43,10 +43,10 @@
                 
                 <h2>En général, quand fréquentez-vous la bibliothèque ?</h2>
                 <div class="button-container1">
-                    <button class="response-button1" data-category="time" data-value="matin" onclick="selectOption('matin', 'time')">En semaine le matin (9h - 13h)</button>
-                    <button class="response-button1" data-category="time" data-value="aprem" onclick="selectOption('aprem', 'time')">En semaine l'après-midi (13h - 17h)</button>
-                    <button class="response-button1" data-category="time" data-value="soiree" onclick="selectOption('soiree', 'time')">En semaine en soirée (17h - 21h)</button>
-                    <button class="response-button1" data-category="time" data-value="samedi" onclick="selectOption('samedi', 'time')">Le samedi</button>
+                    <button class="response-button1" data-category="r2" data-value="matin" onclick="selectOption('matin', 'r2')">En semaine le matin (9h - 13h)</button>
+                    <button class="response-button1" data-category="r2" data-value="aprem" onclick="selectOption('aprem', 'r2')">En semaine l'après-midi (13h - 17h)</button>
+                    <button class="response-button1" data-category="r2" data-value="soiree" onclick="selectOption('soiree', 'r2')">En semaine en soirée (17h - 21h)</button>
+                    <button class="response-button1" data-category="r2" data-value="samedi" onclick="selectOption('samedi', 'r2')">Le samedi</button>
                 </div>
             
                 <div class="next-container">    
@@ -63,8 +63,8 @@
 
     <script>
         let selections = {
-            reason: new Set(),
-            time: new Set()
+            r1: new Set(),
+            r2: new Set()
         };
     
 
@@ -86,15 +86,15 @@ function selectOption(value, category) {
 }
         function checkSelection() {
             const nextButton = document.getElementById('nextButton');
-            nextButton.disabled = selections.reason.size === 0 || selections.time.size === 0;
+            nextButton.disabled = selections.r1.size === 0 || selections.r2.size === 0;
         }
     
         function submitAnswers() {
-            const reponseReason = Array.from(selections.reason).join(',');
-            const reponseTime = Array.from(selections.time).join(',');
+            const r1 = Array.from(selections.r1).join(',');
+            const r2 = Array.from(selections.r2).join(',');
     
-            if(reponseReason && reponseTime) {
-                window.location.href = `q4.html?reponseReason=${encodeURIComponent(reponseReason)}&reponseTime=${encodeURIComponent(reponseTime)}`;
+            if(r1 && r2) {
+                window.location.href = `q4.html?r1=${encodeURIComponent(r1)}&r2=${encodeURIComponent(r2)}`;
             }
         }
     </script>

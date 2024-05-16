@@ -46,10 +46,10 @@
     </div>
 
     <script>
-        let selectedComfort = '';
+        let r6 = '';
 
         function selectOption(value) {
-            selectedComfort = value;
+            r6 = value;
             const buttons = document.querySelectorAll('.response-button1');
             buttons.forEach(button => {
                 button.classList.remove('selected');
@@ -60,12 +60,12 @@
         }
 
         function submitAnswer() {
-            if (selectedComfort === '') {
+            if (r6 === '') {
                 alert('Veuillez sélectionner une option.');
                 return;
             }
             const urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('comfort', selectedComfort);
+            urlParams.set('r6', r6);
             window.location.href = `q10.html?${urlParams.toString()}`;
         }
     </script>

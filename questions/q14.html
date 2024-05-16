@@ -33,26 +33,26 @@
         <form onsubmit="return false;">
             <h2>Ressentez-vous des courants d'air dans la pièce où vous vous trouvez ?</h2>
             <div class="button-container1">
-                <button class="response-button1" data-value="oui" onclick="selectOption('air_flow', 'oui')">Oui</button>
-                <button class="response-button1" data-value="non" onclick="selectOption('air_flow', 'non')">Non</button>
+                <button class="response-button1" data-value="oui" onclick="selectOption('r12', 'oui')">Oui</button>
+                <button class="response-button1" data-value="non" onclick="selectOption('r12', 'non')">Non</button>
             </div>
             <div id="detailOptions" style="display:none;">
                 <h3>Si oui, à quel(s) niveau(x) ?</h3>
                 <div class="button-container1">
-                    <button class="response-button1" data-value="visage" onclick="selectOption('air_detail', 'visage')">Visage</button>
-                    <button class="response-button1" data-value="buste" onclick="selectOption('air_detail', 'buste')">Buste</button>
-                    <button class="response-button1" data-value="cou_nuque" onclick="selectOption('air_detail', 'cou_nuque')">Cou, nuque</button>
-                    <button class="response-button1" data-value="jambes_chevilles_pieds" onclick="selectOption('air_detail', 'jambes_chevilles_pieds')">Jambes, chevilles, pieds</button>
-                    <button class="response-button1" data-value="autre" onclick="selectOption('air_detail', 'autre')">Autre</button>
+                    <button class="response-button1" data-value="visage" onclick="selectOption('r13', 'visage')">Visage</button>
+                    <button class="response-button1" data-value="buste" onclick="selectOption('r13', 'buste')">Buste</button>
+                    <button class="response-button1" data-value="cou_nuque" onclick="selectOption('r13', 'cou_nuque')">Cou, nuque</button>
+                    <button class="response-button1" data-value="jambes_chevilles_pieds" onclick="selectOption('r13', 'jambes_chevilles_pieds')">Jambes, chevilles, pieds</button>
+                    <button class="response-button1" data-value="autre" onclick="selectOption('r13', 'autre')">Autre</button>
                 </div>
             </div>
             <h2>Vous trouvez cela...</h2>
             <div class="button-container1">
-                <button class="response-button1" data-value="tres_confortable" onclick="selectOption('comfort', 'tres_confortable')">Très confortable</button>
-                <button class="response-button1" data-value="confortable" onclick="selectOption('comfort', 'confortable')">Confortable</button>
-                <button class="response-button1" data-value="inconfortable" onclick="selectOption('comfort', 'inconfortable')">Inconfortable</button>
-                <button class="response-button1" data-value="tres_inconfortable" onclick="selectOption('comfort', 'tres_inconfortable')">Très inconfortable</button>
-                <button class="response-button1" data-value="extremement_inconfortable" onclick="selectOption('comfort', 'extremement_inconfortable')">Extrêmement inconfortable</button>
+                <button class="response-button1" data-value="tres_confortable" onclick="selectOption('r14', 'tres_confortable')">Très confortable</button>
+                <button class="response-button1" data-value="confortable" onclick="selectOption('r14', 'confortable')">Confortable</button>
+                <button class="response-button1" data-value="inconfortable" onclick="selectOption('r14', 'inconfortable')">Inconfortable</button>
+                <button class="response-button1" data-value="tres_inconfortable" onclick="selectOption('r14', 'tres_inconfortable')">Très inconfortable</button>
+                <button class="response-button1" data-value="extremement_inconfortable" onclick="selectOption('r14', 'extremement_inconfortable')">Extrêmement inconfortable</button>
             </div>
 
             <div class="next-container">    
@@ -63,55 +63,55 @@
     </div>
 
     <script>
-    let selections = { air_flow: '', air_detail: [], comfort: '' };
+    let selections = { r12: '', r13: [], r14: '' };
 
     function selectOption(category, value) {
         const categoryButtons = document.querySelectorAll(`.response-button1[data-value][onclick*='${category}']`);
         categoryButtons.forEach(button => button.classList.remove('selected'));
 
-        if (category === 'air_detail' && value) {
-            const index = selections.air_detail.indexOf(value);
+        if (category === 'r13' && value) {
+            const index = selections.r13.indexOf(value);
             if (index > -1) {
-                selections.air_detail.splice(index, 1); 
+                selections.r13.splice(index, 1); 
             } else {
-                selections.air_detail.push(value); 
+                selections.r13.push(value); 
             }
             categoryButtons.forEach(button => {
-                if (selections.air_detail.includes(button.getAttribute('data-value'))) {
+                if (selections.r13.includes(button.getAttribute('data-value'))) {
                     button.classList.add('selected');
                 }
             });
         } else {
             selections[category] = value;
             document.querySelector(`.response-button1[data-value='${value}'][onclick*='${category}']`).classList.add('selected');
-            if (category === 'air_flow' && value === 'oui') {
+            if (category === 'r12' && value === 'oui') {
                 document.getElementById('detailOptions').style.display = 'block';
-            } else if (category === 'air_flow' && value === 'non') {
+            } else if (category === 'r12' && value === 'non') {
                 document.getElementById('detailOptions').style.display = 'none';
-                selections.air_detail = []; 
+                selections.r13 = []; 
             }
         }
     }
 
     function submitAnswers() {
-        if (!selections.air_flow) {
+        if (!selections.r12) {
             alert('Veuillez indiquer si vous ressentez des courants d\'air.');
             return;
         }
-        if (selections.air_flow === 'oui' && selections.air_detail.length === 0) {
+        if (selections.r12 === 'oui' && selections.r13.length === 0) {
             alert('Veuillez spécifier où vous ressentez des courants d\'air.');
             return;
         }
-        if (!selections.comfort) {
+        if (!selections.r14) {
             alert('Veuillez indiquer votre niveau de confort.');
             return;
         }
         const urlParams = new URLSearchParams(window.location.search);
-        urlParams.set('air_flow', selections.air_flow);
-        if (selections.air_flow === 'oui') {
-            urlParams.set('air_detail', selections.air_detail.join(','));
+        urlParams.set('r12', selections.r12);
+        if (selections.r12 === 'oui') {
+            urlParams.set('r13', selections.r13.join(','));
         }
-        urlParams.set('comfort', selections.comfort);
+        urlParams.set('r14', selections.r14);
         window.location.href = `q15.html?${urlParams.toString()}`;
     }
 </script>

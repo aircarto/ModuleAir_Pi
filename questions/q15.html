@@ -30,7 +30,7 @@
         <h1>9. Confort thermique</h1>
         <form onsubmit="return false;">
             <h2>Avez-vous identifié d'autres sources d'inconfort thermique dans la pièce où vous vous trouvez ?</h2>
-            <textarea id="otherSources" rows="4" cols="50" placeholder="Entrez votre réponse"></textarea>
+            <textarea id="r15" rows="4" cols="50" placeholder="Entrez votre réponse"></textarea>
             
             <div class="next-container">    
                 <button id="nextButton" class="next-button" onclick="submitAnswers()">Question Suivante</button>
@@ -41,13 +41,13 @@
 
     <script>
         function submitAnswers() {
-            const otherSources = document.getElementById('otherSources').value.trim();
-            if (!otherSources) {
+            const r15 = document.getElementById('r15').value.trim();
+            if (!r15) {
                 alert('Veuillez entrer une réponse ou indiquer "Non" si aucune autre source.');
                 return;
             }
             const urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('other_thermal_sources', otherSources);
+            urlParams.set('r15', r15);
             window.location.href = `q16.html?${urlParams.toString()}`;
         }
     </script>

@@ -49,10 +49,10 @@
     </div>
 
     <script>
-        let selectedSection = '';
+        let r5 = '';
 
         function selectOption(value) {
-            selectedSection = value;
+            r5 = value;
             const buttons = document.querySelectorAll('.response-button2');
             buttons.forEach(button => {
                 button.classList.remove('selected');
@@ -63,12 +63,12 @@
         }
 
         function submitAnswer() {
-    if (selectedSection === '') {
+    if (r5 === '') {
         alert('Veuillez sélectionner une section.');
         return;
     }
     const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set('selectedSection', selectedSection);
+    urlParams.set('r5', r5);
     window.location.href = `q9.html?${urlParams.toString()}`;
 }
 </script>

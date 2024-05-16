@@ -31,9 +31,9 @@
         <form onsubmit="return false;">
             <h2>Avez-vous l'impression que votre tenue est adaptée à la température actuelle ?</h2>
             <div class="button-container1">
-                <button class="response-button1" data-value="adaptée" onclick="selectOption('clothing_fit', 'adaptée')">Adaptée</button>
-                <button class="response-button1" data-value="inadaptée" onclick="selectOption('clothing_fit', 'inadaptée')">Inadaptée</button>
-                <button class="response-button1" data-value="je_ne_sais_pas" onclick="selectOption('clothing_fit', 'je_ne_sais_pas')">Je ne sais pas</button>
+                <button class="response-button1" data-value="adaptée" onclick="selectOption('r17', 'adaptée')">Adaptée</button>
+                <button class="response-button1" data-value="inadaptée" onclick="selectOption('r17', 'inadaptée')">Inadaptée</button>
+                <button class="response-button1" data-value="je_ne_sais_pas" onclick="selectOption('r17', 'je_ne_sais_pas')">Je ne sais pas</button>
             </div>
             <div class="next-container">
                 <button id="nextButton" class="next-button" onclick="submitAnswer()">Soumettre Réponse</button>
@@ -43,10 +43,10 @@
     </div>
 
     <script>
-        let selection = '';
+        let r17 = '';
 
         function selectOption(category, value) {
-            selection = value;
+            r17 = value;
             const buttons = document.querySelectorAll(`.response-button1`);
             buttons.forEach(button => {
                 button.classList.remove('selected');
@@ -57,12 +57,12 @@
         }
 
         function submitAnswer() {
-            if (!selection) {
+            if (!r17) {
                 alert('Veuillez sélectionner une option.');
                 return;
             }
             const urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('clothing_fit', selection);
+            urlParams.set('r17', r17);
             window.location.href = `../reponse.php?${urlParams.toString()}`;
         }
     </script>

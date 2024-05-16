@@ -46,10 +46,10 @@
     </div>
 
     <script>
-        let selectedOption = '';
+        let r7 = '';
 
         function selectOption(value) {
-            selectedOption = value;
+            r7 = value;
             const buttons = document.querySelectorAll('.response-button1');
             buttons.forEach(button => {
                 button.classList.remove('selected');
@@ -60,12 +60,12 @@
         }
 
         function submitAnswer() {
-            if (selectedOption === '') {
+            if (r7 === '') {
                 alert('Veuillez sélectionner une option.');
                 return;
             }
             const urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('shelter_from_heat', selectedOption);
+            urlParams.set('r7', r7);
             window.location.href = `q11.html?${urlParams.toString()}`;
         }
     </script>
