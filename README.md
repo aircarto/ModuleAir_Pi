@@ -53,11 +53,16 @@ file_put_contents('/var/www/html/ModuleAir_Pi/device_id.txt', DEVICE_ID); ?>
 
 Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être modifier de la sorte afin d'automatiser les processus : 
 ```
+
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_data_BME280.py
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_data_NextPM.py
+*/2 * * * * python /var/www/html/ModuleAir_Pi/Write_Data_CO2.py
 */2 * * * * python /var/www/html/ModuleAir_Pi/Write_temp_core.py
+0 9 * * * python /var/www/html/ModuleAir_Pi/csv_files/create_csv_sensors.py >> /var/www/html/ModuleAir_Pi/logs/app.log 2>&1
+0 9 * * * python /var/www/html/ModuleAir_Pi/csv_files/create_csv_reponses.py >> /var/www/html/ModuleAir_Pi/logs/app.log 2>&1
 @reboot /var/www/html/ModuleAir_Pi/app.sh
 @reboot sudo php /var/www/html/ModuleAir_Pi/global.php
+
 ```
 
 Pour prévenir des éventuels switch de port de la sonde de CO2 et NextPM, il faut respectivement créer un fichier CO2.rules et un fichier PM.rules au niveau de /etc/udev/rules.d/ :
