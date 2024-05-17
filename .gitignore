@@ -2,4 +2,4 @@ vendor/
 __pycache__/
 logs/
 global.php
-device_id.php
+device_id.txt
