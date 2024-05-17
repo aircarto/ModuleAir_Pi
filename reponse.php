@@ -46,11 +46,11 @@
                 $r29 = isset($_GET['r29']) ? $_GET['r29'] : 'Non_specifie'; 
                 $r30 = isset($_GET['r30']) ? $_GET['r30'] : 'Non_specifie'; ?>
 
-        </p>
+</p>
             <p>La temperature est de <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; // attention STRING not FLOAT ?> °C</p>
             <p>Le taux d'humidité est de <?php $pythonscript_hum = "Read_data_hum.py"; $output_hum = shell_exec('python ' . $pythonscript_hum ); echo $output_hum; // attention STRING not FLOAT?> %</p>
-            
-            
+            <?php $pythonscript_CO2 = "Read_data_CO2.py"; $output_CO2 = shell_exec('python ' . $pythonscript_CO2 ); ?>
+            <?php $pythonscript_press = "Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); ?>
             <?php 
             
             //GET PM data (ATTENTION output String not Float)
@@ -72,9 +72,9 @@
             $conn = pg_connect("host=localhost dbname=cnrs user=airlab_test password=123plouf"); 
             $query = "INSERT INTO reponses (
                 temperature, humidity, date_reponse, pressure, device_id, temprature_core, pm1, pm25, pm10, sexe,
-                r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30) VALUES (
+                r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, co2) VALUES (
                 '$output_temp', '$output_hum', '$fullDate', '$press', '".DEVICE_ID."', '$temp_core', '$output_PM1', '$output_PM25', '$output_PM10', '$reponseSexe', 
-                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$r29', '$r30'
+                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$r29', '$r30','$output_CO2'
             )"; 
             $result = pg_query($conn, $query); pg_close($conn); 
 
