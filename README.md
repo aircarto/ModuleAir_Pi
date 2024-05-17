@@ -43,8 +43,13 @@ Ces differents modules peuvent être installés avec les commandes suivantes :
 - bme280.py : Permet le fonctionnement de la sonde BME280 et récolte les données de temperature, pression et humidité.
 - Write_data_***.py : Inscrit les données recupérés par les différents capteurs et sondes sur InfluxDB.
 - Read_data_***.py : Récupère les données depuis InfluxDB.
-- global.php : Donne l'identifiant du capteur (à modifier pour chaque boîtier utilisé). Le nom est repercuté dans "device_id.txt"
 - reponse.php | index.html | questionX.html | style.css : affichent respectivement les pages web de questions et de données
+- global.php : Donne l'identifiant du capteur (à créer pour chaque boîtier). Le nom est repercuté dans "device_id.txt", (qui est automatiquement crée par global.php)
+
+```<?php
+define('DEVICE_ID', '`*nom que l'on veut donner au capteur*`');
+file_put_contents('/var/www/html/ModuleAir_Pi/device_id.txt', DEVICE_ID); ?>
+``
 
 Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être modifier de la sorte afin d'automatiser les processus : 
 ```
@@ -62,6 +67,8 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="C
 
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="NextPM"
 ```
+
+
 
 ## Boitier
 
