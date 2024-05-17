@@ -13,24 +13,24 @@
         <p>
         <?php
 
-                $reponseSexe = isset($_GET['reponseSexe']) ? $_GET['reponseSexe'] : 'Non spécifié';
-                $r1 = isset($_GET['r1']) ? $_GET['r1'] : 'Non spécifié';
-                $r2 = isset($_GET['r2']) ? $_GET['r2'] : 'Non spécifié';
-                $r3 = isset($_GET['r3']) ? $_GET['r3'] : 'Non spécifié';
-                $r4 = isset($_GET['r4']) ? $_GET['r4'] : 'Non spécifié';
-                $r5 = isset($_GET['r5']) ? $_GET['r5'] : 'Non spécifié';
-                $r6 = isset($_GET['r6']) ? $_GET['r6'] : 'Non spécifié';
-                $r7 = isset($_GET['r7']) ? $_GET['r7'] : 'Non spécifié';
-                $r8 = isset($_GET['r8']) ? $_GET['r8'] : 'Non spécifié';
-                $r9 = isset($_GET['r9']) ? $_GET['r9'] : 'Non spécifié';
-                $r10 = isset($_GET['r10']) ? $_GET['r10'] : 'Non spécifié';
-                $r11 = isset($_GET['r11']) ? $_GET['r11'] : 'Non spécifié';
-                $r12 = isset($_GET['r12']) ? $_GET['r12'] : 'Non spécifié';
-                $r13 = isset($_GET['r13']) ? $_GET['r13'] : 'Non spécifié';
-                $r14 = isset($_GET['r14']) ? $_GET['r14'] : 'Non spécifié';
-                $r15 = isset($_GET['r15']) ? $_GET['r15'] : 'Non spécifié';
-                $r16 = isset($_GET['r16']) ? $_GET['r16'] : 'Non spécifié';
-                $r17 = isset($_GET['r17']) ? $_GET['r17'] : 'Non spécifié'; ?>
+                $reponseSexe = isset($_GET['reponseSexe']) ? $_GET['reponseSexe'] : 'Non_specifie';
+                $r1 = isset($_GET['r1']) ? $_GET['r1'] : 'Non_specifie';
+                $r2 = isset($_GET['r2']) ? $_GET['r2'] : 'Non_specifie';
+                $r3 = isset($_GET['r3']) ? $_GET['r3'] : 'Non_specifie';
+                $r4 = isset($_GET['r4']) ? $_GET['r4'] : 'Non_specifie';
+                $r5 = isset($_GET['r5']) ? $_GET['r5'] : 'Non_specifie';
+                $r6 = isset($_GET['r6']) ? $_GET['r6'] : 'Non_specifie';
+                $r7 = isset($_GET['r7']) ? $_GET['r7'] : 'Non_specifie';
+                $r8 = isset($_GET['r8']) ? $_GET['r8'] : 'Non_specifie';
+                $r9 = isset($_GET['r9']) ? $_GET['r9'] : 'Non_specifie';
+                $r10 = isset($_GET['r10']) ? $_GET['r10'] : 'Non_specifie';
+                $r11 = isset($_GET['r11']) ? $_GET['r11'] : 'Non_specifie';
+                $r12 = isset($_GET['r12']) ? $_GET['r12'] : 'Non_specifie';
+                $r13 = isset($_GET['r13']) ? $_GET['r13'] : 'Non_specifie';
+                $r14 = isset($_GET['r14']) ? $_GET['r14'] : 'Non_specifie';
+                $r15 = isset($_GET['r15']) ? $_GET['r15'] : 'Non_specifie';
+                $r16 = isset($_GET['r16']) ? $_GET['r16'] : 'Non_specifie';
+                $r17 = isset($_GET['r17']) ? $_GET['r17'] : 'Non_specifie'; ?>
 
         </p>
             <p>La temperature est de <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; // attention STRING not FLOAT ?> °C</p>
@@ -55,7 +55,12 @@
             fclose($myfile); $temp_core = $temp_core/1000;  
 
             //Connexion to PSQL database to insert data locally
-            $conn = pg_connect("host=localhost dbname=cnrs user=airlab_test password=123plouf"); $query = "INSERT INTO reponses (reponse, temperature, humidity, date_reponse, pressure, device_id, temprature_core, pm1, pm25, pm10, sexe, activites) VALUES ('$r', '$output_temp' , '$output_hum', '$fullDate','$press','".DEVICE_ID."', '$temp_core', '$output_PM1', '$output_PM25', '$output_PM10', '$rs','$reponsesAC')";
+            $conn = pg_connect("host=localhost dbname=cnrs user=airlab_test password=123plouf"); $query = "INSERT INTO reponses (
+                temperature, humidity, date_reponse, pressure, device_id, temprature_core, pm1, pm25, pm10, sexe,
+                r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30) VALUES (
+                '$output_temp', '$output_hum', '$fullDate', '$press', '".DEVICE_ID."', '$temp_core', '$output_PM1', '$output_PM25', '$output_PM10', '$reponseSexe', 
+                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$r29', '$r30'
+            )"; 
             $result = pg_query($conn, $query); pg_close($conn); 
 
             //Send data to AirCarto Server

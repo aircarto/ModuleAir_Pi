@@ -9,13 +9,13 @@ function afficherFenetreModale() {;
         </div>
     `;
     document.body.appendChild(modal);
-}
+    }
 
 function continuerQuestionnaire() {
     var modal = document.querySelector('.modal');
     modal.parentNode.removeChild(modal);
     resetTimer();
-}
+    }
 
 var inactivityTimer;
 var lastActivityTime = Date.now(); 
@@ -24,7 +24,7 @@ function resetTimer() {
     clearTimeout(inactivityTimer);
     lastActivityTime = Date.now(); 
     inactivityTimer = setTimeout(checkInactivity, 10000);
-}
+    }
 
 function checkInactivity() {
     var currentTime = Date.now();
@@ -32,6 +32,11 @@ function checkInactivity() {
     if (timeSinceLastActivity >= 10000) {
         afficherFenetreModale();
     }
+}
+
+function retourAccueil() {
+       
+       window.location.href = '../index.html';
 }
 
 window.addEventListener('click', resetTimer);
