@@ -49,7 +49,7 @@
 </p>
             <p>La temperature est de <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; // attention STRING not FLOAT ?> °C</p>
             <p>Le taux d'humidité est de <?php $pythonscript_hum = "Read_data_hum.py"; $output_hum = shell_exec('python ' . $pythonscript_hum ); echo $output_hum; // attention STRING not FLOAT?> %</p>
-            <?php $pythonscript_CO2 = "Read_data_CO2.py"; $output_CO2 = shell_exec('python ' . $pythonscript_CO2 ); ?>
+            <p>Le taux de CO2 est de<?php $pythonscript_CO2 = "Read_data_CO2.py"; $output_CO2 = shell_exec('python ' . $pythonscript_CO2 );echo $output_CO2; ?>ppm</p>
             <?php $pythonscript_press = "Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); ?>
             <?php 
             
@@ -64,6 +64,7 @@
             date_default_timezone_set('Europe/Paris'); 
             $t = time(); $fullDate = date("Y-m-d H:i:s", $t); 
             $press = round($output_press); 
+            $co2=round($output_CO2);
             $myfile = fopen("/sys/class/thermal/thermal_zone0/temp", "r"); 
             $temp_core = fread($myfile,filesize("/sys/class/thermal/thermal_zone0/temp")); 
             fclose($myfile); $temp_core = $temp_core/1000;  
@@ -74,7 +75,7 @@
                 temperature, humidity, date_reponse, pressure, device_id, temprature_core, pm1, pm25, pm10, sexe,
                 r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, co2) VALUES (
                 '$output_temp', '$output_hum', '$fullDate', '$press', '".DEVICE_ID."', '$temp_core', '$output_PM1', '$output_PM25', '$output_PM10', '$reponseSexe', 
-                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$r29', '$r30','$output_CO2'
+                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$r29', '$r30','$co2'
             )"; 
             $result = pg_query($conn, $query); pg_close($conn); 
 
@@ -109,7 +110,20 @@
                 'r14' => $r14,
                 'r15' => $r15,
                 'r16' => $r16,
-                'r17' => $r17
+                'r17' => $r17,
+                'r18' => $r18,
+                'r19' => $r19,
+                'r20' => $r20,
+                'r21' => $r21,
+                'r22' => $r22,
+                'r23' => $r23,
+                'r24' => $r24,
+                'r25' => $r25,
+                'r26' => $r26,
+                'r27' => $r27,
+                'r28' => $r28,
+                'r29' => $r29,
+                'r30' => $r30
             );
             //$data_CNRS = json_encode($data_CNRS);
             $client = new \GuzzleHttp\Client();   

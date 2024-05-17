@@ -9,7 +9,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
 
-logging.basicConfig(filename='/var/www/html/ModuleAir_Pi/logs/app.log', filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+#logging.basicConfig(filename='/var/www/html/ModuleAir_Pi/logs/app.log', filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 #logging.warning(f"Getting CO2 for: {name}")
 
