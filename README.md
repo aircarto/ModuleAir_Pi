@@ -73,6 +73,58 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="C
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="NextPM"
 ```
 
+## SQL database
+
+Data from the form are stored inside a psql database structured as follow:
+
+```
+CREATE TABLE public.reponses_new (
+reponse varchar(20) NULL,
+temperature float8  NULL,
+humidity float8  NULL,
+date_reponse timestamp NULL,
+pressure int4 NULL,
+co2 int4 NULL,
+pm1 float8 NULL,
+pm25 float8 NULL,
+pm10 float8 NULL,
+device_id varchar(50) NULL,
+temprature_core float8  NULL,
+sexe varchar(15) NULL,
+activites varchar(60) NULL,
+r1 varchar(100) NULL,
+r2 varchar(100) NULL,
+r3 varchar(100) NULL,
+r4 varchar(100) NULL,
+r5 varchar(100) NULL,
+r6 varchar(100) NULL,
+r7 varchar(100) NULL,
+r8 varchar(100) NULL,
+r9 varchar(100) NULL,
+r10 varchar(100) NULL,
+r11 varchar(100) NULL,
+r12 varchar(100) NULL,
+r13 varchar(100) NULL,
+r14 varchar(100) NULL,
+r15 varchar(100) NULL,
+r16 varchar(100) NULL,
+r17 varchar(100) NULL,
+r18 varchar(100) NULL,
+r19 varchar(100) NULL,
+r20 varchar(100) NULL,
+r21 varchar(100) NULL,
+r22 varchar(100) NULL,
+r23 varchar(100) NULL,
+r24 varchar(100) NULL,
+r25 varchar(100) NULL,
+r26 varchar(100) NULL,
+r27 varchar(100) NULL,
+r28 varchar(100) NULL,
+r29 varchar(100) NULL,
+r30 varchar(100) NULL
+);
+```
+
 
 
 ## Boitier
