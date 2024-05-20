@@ -39,7 +39,7 @@ try:
     cursor = connection.cursor()
 
     # Execute a query
-    query = "SELECT * FROM reponses;"
+    query = "SELECT * FROM reponses_new;"
     cursor.execute(query)
 
     # Fetch all rows from the executed query
