@@ -46,10 +46,11 @@ Ces differents modules peuvent être installés avec les commandes suivantes :
 - reponse.php | index.html | questionX.html | style.css : affichent respectivement les pages web de questions et de données
 - global.php : Donne l'identifiant du capteur (à créer pour chaque boîtier). Le nom est repercuté dans "device_id.txt", (qui est automatiquement crée par global.php)
 
-```<?php
+```
+<?php
 define('DEVICE_ID', '`*nom que l'on veut donner au capteur*`');
 file_put_contents('/var/www/html/ModuleAir_Pi/device_id.txt', DEVICE_ID); ?>
-``
+```
 
 Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être modifier de la sorte afin d'automatiser les processus : 
 ```
