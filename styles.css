@@ -51,6 +51,7 @@ h2 {
     font-size: 60px;
     border: none;
     border-radius: 5px;
+    margin: 5px;
     background-color: #007bff;
     color: white;
     cursor: pointer;
@@ -60,11 +61,11 @@ h2 {
 }
 
 .response-button1 {
-    padding: 20px 40px;
+    padding: 15px 30px;
     font-size: 20px;
     border: none;
     border-radius: 1px;
-    margin: 10px;
+    margin: 5px;
     background-color: #007bff;
     color: white;
     cursor: pointer;
@@ -163,6 +164,23 @@ h2 {
     min-height: 100vh; 
 }
 
+.response-container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start; 
+    height: 100%; 
+}
+
+.question-container3 {
+    display: flex;
+    flex-direction: column; 
+    width: 50%; 
+    padding: 20px; 
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+
 .button-container {
     margin-top: 20px;
 }
@@ -175,12 +193,20 @@ h2 {
     margin: 20px 0;
 }
 
-.button-container2 {
-    margin-top: 20px;
+.button-container {
+    margin-top: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
     margin: 20px 0;
+}
+
+.button-container2 {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    margin: 10px 0;
 }
 
 button.large {
@@ -216,6 +242,11 @@ body {
 h1, h2 {
     font-size: 24px; 
 }
+
+h3 {
+    font-size: 65px; 
+}
+
 .question p, label {
     font-size: 18px; 
 }
@@ -261,4 +292,39 @@ button {
 .custom-checkbox input[type="checkbox"]:checked + label {
     background-color: #0066cc; 
     color: #fff;
+}
+
+p1 {
+    text-align: center;   
+    word-wrap: break-word; 
+    padding: 0px 200px;
+    font-size: 30px;         
+}
+
+p3 {
+    text-align: center;   
+    word-wrap: break-word; 
+    padding: 0px 200px;
+    font-size: 50px;         
+}
+
+.keyboard-button {
+    padding: 8px 18px; 
+    font-size: 18px; 
+    margin: 3px; 
+    background-color: #f0f0f0; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+.keyboard-row {
+    margin-bottom: 5px; 
+}
+.keyboard-container {
+    max-width: 600px; 
+    margin: auto; 
+}
+textarea {
+    width: 100%; 
+    margin-bottom: 20px; 
 }

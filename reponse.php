@@ -8,9 +8,8 @@
 </head>
 <body>
 <div class="response-container">
-        <h1>Réponse :</h1>
+        <h2>Merci pour vos réponses</h2>
         <link rel="stylesheet" href="../styles.css">
-        <p>
         <?php
 
                 $reponseSexe = isset($_GET['reponseSexe']) ? $_GET['reponseSexe'] : 'Non_specifie';
@@ -45,11 +44,13 @@
                 $r28 = isset($_GET['r28']) ? $_GET['r28'] : 'Non_specifie';
                 $r29 = isset($_GET['r29']) ? $_GET['r29'] : 'Non_specifie'; 
                 $r30 = isset($_GET['r30']) ? $_GET['r30'] : 'Non_specifie'; ?>
-
-</p>
+            <p1>Vos réponses sont précieuses et nous seront très utiles pour mieux comprendre le confort thermique des usagers de cette bibliothèque.
+                Si vous voulez en savoir sur plus le projet Crocus, scannez le QR code ci dessous. 
+                Pour vous remercier, vous trouverez ci dessous la température et l’humidité mesurés en temps réel par la station qui se trouve devant vous</p1>
             <p>La temperature est de <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; // attention STRING not FLOAT ?> °C</p>
             <p>Le taux d'humidité est de <?php $pythonscript_hum = "Read_data_hum.py"; $output_hum = shell_exec('python ' . $pythonscript_hum ); echo $output_hum; // attention STRING not FLOAT?> %</p>
-            <p>Le taux de CO2 est de<?php $pythonscript_CO2 = "Read_data_CO2.py"; $output_CO2 = shell_exec('python ' . $pythonscript_CO2 );echo $output_CO2; ?>ppm</p>
+            <img src="/Images/QR.png" alt="QR Code pour le projet Crocus">
+            <?php $pythonscript_CO2 = "Read_data_CO2.py"; $output_CO2 = shell_exec('python ' . $pythonscript_CO2 );?>
             <?php $pythonscript_press = "Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); ?>
             <?php 
             
@@ -150,7 +151,7 @@
   </div>
 
     <script>
-    setTimeout(function() { window.location.href = 'index.html'; }, 30000); 
+    setTimeout(function() { window.location.href = 'index.html'; }, 60000); 
     </script>
 
 

@@ -23,13 +23,13 @@ var lastActivityTime = Date.now();
 function resetTimer() {
     clearTimeout(inactivityTimer);
     lastActivityTime = Date.now(); 
-    inactivityTimer = setTimeout(checkInactivity, 10000);
+    inactivityTimer = setTimeout(checkInactivity, 60000);
     }
 
 function checkInactivity() {
     var currentTime = Date.now();
     var timeSinceLastActivity = currentTime - lastActivityTime;
-    if (timeSinceLastActivity >= 10000) {
+    if (timeSinceLastActivity >= 30000) {
         afficherFenetreModale();
     }
 }

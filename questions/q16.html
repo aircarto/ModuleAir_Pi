@@ -27,10 +27,67 @@
         </div>
     </div>
     <div class="response-container">
-        <h1>9. Confort thermique</h1>
         <form onsubmit="return false;">
             <h2>Y a-t-il des choses que vous souhaitez partager sur la qualité de l'air de la pièce où vous vous trouvez ?</h2>
             <textarea id="r16" rows="4" cols="50" placeholder="Entrez votre réponse"></textarea>
+            <div id="virtualKeyboard" class="keyboard-container">
+                <div id="virtualKeyboard" class="keyboard-container">
+                     <div class="keyboard-row">
+                        <button class="keyboard-button" onclick="typeKey('a')">A</button>
+                        <button class="keyboard-button" onclick="typeKey('z')">Z</button>
+                        <button class="keyboard-button" onclick="typeKey('e')">E</button>
+                        <button class="keyboard-button" onclick="typeKey('r')">R</button>
+                        <button class="keyboard-button" onclick="typeKey('t')">T</button>
+                        <button class="keyboard-button" onclick="typeKey('y')">Y</button>
+                        <button class="keyboard-button" onclick="typeKey('u')">U</button>
+                        <button class="keyboard-button" onclick="typeKey('i')">I</button>
+                        <button class="keyboard-button" onclick="typeKey('o')">O</button>
+                        <button class="keyboard-button" onclick="typeKey('p')">P</button>
+                </div>
+
+                <div class="keyboard-row">
+                    <button class="keyboard-button" onclick="typeKey('q')">Q</button>
+                    <button class="keyboard-button" onclick="typeKey('s')">S</button>
+                    <button class="keyboard-button" onclick="typeKey('d')">D</button>
+                    <button class="keyboard-button" onclick="typeKey('f')">F</button>
+                    <button class="keyboard-button" onclick="typeKey('g')">G</button>
+                    <button class="keyboard-button" onclick="typeKey('h')">H</button>
+                    <button class="keyboard-button" onclick="typeKey('j')">J</button>
+                    <button class="keyboard-button" onclick="typeKey('k')">K</button>
+                    <button class="keyboard-button" onclick="typeKey('l')">L</button>
+                    <button class="keyboard-button" onclick="typeKey('m')">M</button>
+                </div>
+
+                <div class="keyboard-row">
+                    <button class="keyboard-button" onclick="typeKey('w')">W</button>
+                    <button class="keyboard-button" onclick="typeKey('x')">X</button>
+                    <button class="keyboard-button" onclick="typeKey('c')">C</button>
+                    <button class="keyboard-button" onclick="typeKey('v')">V</button>
+                    <button class="keyboard-button" onclick="typeKey('b')">B</button>
+                    <button class="keyboard-button" onclick="typeKey('n')">N</button>
+                    <button onclick="backspace()">←</button>
+                </div>
+
+                <div class="keyboard-row">
+                    <button class="keyboard-button" onclick="typeKey('0')">0</button>
+                    <button class="keyboard-button" onclick="typeKey('1')">1</button>
+                    <button class="keyboard-button" onclick="typeKey('2')">2</button>
+                    <button class="keyboard-button" onclick="typeKey('3')">3</button>
+                    <button class="keyboard-button" onclick="typeKey('4')">4</button>
+                    <button class="keyboard-button" onclick="typeKey('5')">5</button>
+                    <button class="keyboard-button" onclick="typeKey('6')">6</button>
+                    <button class="keyboard-button" onclick="typeKey('7')">7</button>
+                    <button class="keyboard-button" onclick="typeKey('8')">8</button>
+                    <button class="keyboard-button" onclick="typeKey('9')">9</button>
+                </div>
+
+                <div class="keyboard-row">
+                    <button class="keyboard-button" onclick="typeKey(' ')">Espace</button>
+                    <button class="keyboard-button" onclick="typeKey('.')">.</button>
+                    <button class="keyboard-button" onclick="typeKey(',')">,</button>
+                    <button class="keyboard-button" onclick="typeKey('!')">!</button>
+                    <button class="keyboard-button" onclick="typeKey('?')">?</button>
+                </div>
             
             <div class="next-container">    
                 <button id="nextButton" class="next-button" onclick="submitAnswers()">Question Suivante</button>
@@ -50,6 +107,18 @@
             const urlParams = new URLSearchParams(window.location.search);
             urlParams.set('r16', r16);
             window.location.href = `q17.html?${urlParams.toString()}`;
+        }
+
+        function typeKey(key) {
+            const textarea = document.getElementById('r16');
+            textarea.value += key; 
+            textarea.focus(); 
+        }
+
+        function backspace() {
+            const textarea = document.getElementById('r16');
+            textarea.value = textarea.value.slice(0, -1); 
+            textarea.focus(); 
         }
     </script>
 </body>
