@@ -25,13 +25,11 @@ DEVICE2 = 0x77
 DEVICE3 = 0x76
 
 def read_sensor_data1(address):
-    bus = smbus.SMBus(1)
-    temperature, pressure, humidity = bme280.readBME280All(address)
+    temperature, pressure, humidity = bme280.readBME280AllBus1(address)
     return temperature, pressure, humidity
 
 def read_sensor_data2(address):
-    bus = smbus.SMBus(3)
-    temperature, pressure, humidity = bme280.readBME280All(address)
+    temperature, pressure, humidity = bme280.readBME280AllBus3(address)
     return temperature, pressure, humidity
 
 temperature1, pressure1, humidity1 = read_sensor_data1(DEVICE1)
@@ -40,6 +38,8 @@ temperature3, pressure3, humidity3 = read_sensor_data2(DEVICE3)
 
 client = InfluxDBClient(url=url, token=token)
 write_api = client.write_api(write_options=SYNCHRONOUS)
+
+print (temperature1, temperature2, temperature3)
 
 
 point1 = Point(name) \
