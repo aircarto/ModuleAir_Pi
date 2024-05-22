@@ -69,12 +69,16 @@ Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être
 
 Pour prévenir des éventuels switch de port de la sonde de CO2 et NextPM, il faut respectivement créer un fichier CO2.rules et un fichier PM.rules au niveau de /etc/udev/rules.d/ :
 
+CO2.rules
+
 ```
 SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", SYMLINK+="C02" 
 
+```
+PM.rules
+```
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="NextPM"
 ```
-
 ## SQL database
 
 Data from the form are stored inside a psql database structured as follow:
