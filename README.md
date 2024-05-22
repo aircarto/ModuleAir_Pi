@@ -20,18 +20,19 @@ Pour se faire, le ModuleAir_PI propose une à plusieurs question fermés auxquel
 
 Différents modules sont nécessaires au fonctionnement du ModuleAire_Pi : 
 - Apache2 pour le serveur web.
-- PHP pour le front-end (développement des pages de questions et de données). 
+- PHP pour le front-end (développement des pages de questions et de données) avec composer. 
 - Python pour le back-end (développement des scripts d'instructions d'écriture et de lecture de données).
 - InfluxDB pour stocker les données recensées par les différents capteurs et sondes. 
 - Docker pour le fonctionnement d'InfluxDB.
 - Postgres pour stocker les réponses saisies par l'utilisateur (bien-être + données de temperature, pression etc au moment de sa réponse).
 
-Ces differents modules peuvent être installés avec les commandes suivantes : 
+Ces differents modules peuvent être installés avec les commandes suivantes (un script install.sh permet de tout installer en une fois) : 
 - Apache2 : sudo apt install apache2
 - PHP : sudo apt install php
-- Serial : pip install pyserial
+- composer:
 - Pip : sudo apt install python3-pip
 - Python : sudo apt install python3
+- Serial : pip install pyserial
 - InfluxDB : sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add - | pip install influxdb-client
 - Docker : https://docs.docker.com/engine/install/raspberry-pi-os/
 - Postgres : sudo apt install postgresql postgresql-contrib
