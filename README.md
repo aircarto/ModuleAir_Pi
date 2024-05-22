@@ -94,6 +94,17 @@ dtoverlay=i2c-gpio,bus=4,i2c_gpio_delay_us=1,i2c_gpio_sda=23,i2c_gpio_scl=24
 dtoverlay=i2c-gpio,bus=3,i2c_gpio_delay_us=1,i2c_gpio_sda=17,i2c_gpio_scl=27
 
 ```
+
+L'envoi des datas en CSV nécessite la création d'une clefs SSD publique (à intégrer sur le serveur distant):
+```
+ssh-keygen
+```
+
+Pour l'affichage en full screen de chromium:
+The issue is that since Raspberry Bookworm there is a new desktop manager Wayland. This doesn't seem to work that well yet.
+I switched the config from Wayland to X11 (sudo raspi-config / 6 Advanced Options / A6 Wayland / W1 X11), rebooted and used the old kiosk configuration.
+
+
 ## SQL database
 
 Data from the form are stored inside a psql database structured as follow:
