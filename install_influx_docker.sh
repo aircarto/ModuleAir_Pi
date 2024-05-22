@@ -12,5 +12,6 @@ sudo docker run \
  --env DOCKER_INFLUXDB_INIT_PASSWORD=123plouf \
  --env DOCKER_INFLUXDB_INIT_ORG=AC \
  --env DOCKER_INFLUXDB_INIT_BUCKET=CNRS \
+ --restart=always \
  influxdb:2
 
