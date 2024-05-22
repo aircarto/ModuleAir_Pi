@@ -3,13 +3,10 @@ import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 from statistics import mean 
+from  influx_variables import TOKEN, ORG, BUCKET, URL
 
-token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="
-org = "AC"
-bucket = "CNRS"
-url="http://localhost:8087"
 
-client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
+client = influxdb_client.InfluxDBClient(url=URL, token=TOKEN, org=ORG)
 query_api = client.query_api()
 
 with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:

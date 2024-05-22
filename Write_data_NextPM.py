@@ -4,6 +4,7 @@ import json
 import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
+from  influx_variables import TOKEN, ORG, BUCKET, URL
 
 with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
@@ -69,21 +70,15 @@ while True:
 
 #name = "CNRS_1"
 
-token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="
-org = "AC"
-bucket = "CNRS"
-url="http://localhost:8087"
 
-
-
-client = InfluxDBClient(url=url, token=token)
+client = InfluxDBClient(url=URL, token=TOKEN)
 write_api = client.write_api(write_options=SYNCHRONOUS)
 
 point = Point(name) \
     .field("PM1", PM1) .field("PM25", PM25) .field("PM10", PM10) 
 
 
-write_api.write(bucket=bucket, org=org, record=point)
+write_api.write(bucket=BUCKET, org=ORG, record=point)
 
 urlp = 'https://data.moduleair.fr/cnrs_biblio/data_cron.php'
 
