@@ -31,7 +31,7 @@ sudo apt-get install python3-pip -y
 
 #Install python3 packages
 echo "Installing Python 3 packages (pip)..."
-sudo pip3 install pyserial influxdb-client --break-system-packages
+sudo pip3 install pyserial influxdb-client psycopg2 --break-system-packages
 
 # Install PostgreSQL
 echo "Installing PostgreSQL..."
