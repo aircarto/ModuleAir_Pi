@@ -7,13 +7,7 @@ import bme280
 import psycopg2
 import smbus
 import requests
-
-
-
-token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="
-org = "AC"
-bucket = "CNRS"
-url="http://localhost:8087"
+from  influx_variables import TOKEN, ORG, BUCKET, URL
 
 with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
@@ -36,7 +30,7 @@ temperature1, pressure1, humidity1 = read_sensor_data1(DEVICE1)
 temperature2, pressure2, humidity2 = read_sensor_data1(DEVICE2)
 temperature3, pressure3, humidity3 = read_sensor_data2(DEVICE3)
 
-client = InfluxDBClient(url=url, token=token)
+client = InfluxDBClient(url=URL, token=TOKEN)
 write_api = client.write_api(write_options=SYNCHRONOUS)
 
 print (temperature1, temperature2, temperature3)
@@ -51,7 +45,7 @@ point2 = Point(name) \
 point3 = Point(name) \
     .field("temperature3", temperature3) .field("pressure3", pressure3) .field("humidity3", humidity3) 
 
-write_api.write(bucket=bucket, org=org, record=[point1, point2,point3])
+write_api.write(bucket=BUCKET, org=ORG, record=[point1, point2,point3])
 
 
 urlp = 'https://data.moduleair.fr/cnrs_biblio/data_cron.php'
