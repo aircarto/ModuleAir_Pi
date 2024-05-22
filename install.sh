@@ -39,7 +39,7 @@ sudo apt-get install postgresql postgresql-contrib -y
 
 # Clone the specified Git repository to /var/www/html
 echo "Cloning Git repository to /var/www/html..."
-sudo git clone https://github.com/aircarto/ModuleAir_Pi /var/www/html
+sudo git clone https://github.com/aircarto/ModuleAir_Pi /var/www/html/ModuleAir_Pi
 
 # Restart Apache to apply changes
 echo "Restarting Apache web server..."
