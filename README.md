@@ -79,6 +79,11 @@ PM.rules
 ```
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="NextPM"
 ```
+
+Il faut également activer le port I2C avec la commande:
+```
+ sudo raspi-config
+```
 ## SQL database
 
 Data from the form are stored inside a psql database structured as follow:
