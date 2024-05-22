@@ -84,6 +84,16 @@ Il faut également activer le port I2C avec la commande:
 ```
  sudo raspi-config
 ```
+Ensuite il faut activer le deuxième port I2C en ajoutant ces lignes dans le fichier /boot/firmware/config.txt :
+```
+ # Uncomment some or all of these to enable the optional hardware interfaces
+dtparam=i2c_arm=on
+dtparam=i2s=on
+dtparam=spi=on
+dtoverlay=i2c-gpio,bus=4,i2c_gpio_delay_us=1,i2c_gpio_sda=23,i2c_gpio_scl=24
+dtoverlay=i2c-gpio,bus=3,i2c_gpio_delay_us=1,i2c_gpio_sda=17,i2c_gpio_scl=27
+
+```
 ## SQL database
 
 Data from the form are stored inside a psql database structured as follow:
