@@ -161,7 +161,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    min-height: 50vh; 
+    min-height: 100vh; 
 }
 
 .response-container2 {
@@ -297,7 +297,7 @@ button {
 p1 {
     text-align: center;   
     word-wrap: break-word; 
-    padding: 10px 200px;
+    padding: 10px 50px;
     font-size: 30px;         
 }
 
