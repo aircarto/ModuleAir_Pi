@@ -9,4 +9,4 @@ pkill chromium
 sleep 5
 
 # Version fullscreen: 
-chromium-browser --start-fullscreen http://localhost:55555
+chromium-browser --start-fullscreen http://localhost
