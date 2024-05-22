@@ -38,7 +38,7 @@ sudo pip3 install pyserial influxdb-client psycopg2 --break-system-packages
 
 # Install PostgreSQL
 echo "Installing PostgreSQL..."
-sudo apt-get install postgresql postgresql-contrib -y
+sudo apt-get install postgresql postgresql-contrib php-pgsql -y
 
 # Clone the specified Git repository to /var/www/html
 echo "Cloning Git repository to /var/www/html..."

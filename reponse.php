@@ -43,7 +43,16 @@
                 $r27 = isset($_GET['r27']) ? $_GET['r27'] : 'Non_specifie';
                 $r28 = isset($_GET['r28']) ? $_GET['r28'] : 'Non_specifie';
                 $r29 = isset($_GET['r29']) ? $_GET['r29'] : 'Non_specifie'; 
-                $r30 = isset($_GET['r30']) ? $_GET['r30'] : 'Non_specifie'; ?>
+                $r30 = isset($_GET['r30']) ? $_GET['r30'] : 'Non_specifie';
+                
+                $output_temp=0;
+                $output_hum=0;
+                $press=0;
+                $temp_core=0;
+                $output_PM1=0;
+                $output_PM25=0;
+                $output_PM10=0;
+                ?>
             <p1>Vos réponses sont précieuses et nous seront très utiles pour mieux comprendre le confort thermique des usagers de cette bibliothèque.
                 Si vous voulez en savoir sur plus le projet Crocus, scannez le QR code ci dessous. 
                 Pour vous remercier, vous trouverez ci dessous la température et l’humidité mesurés en temps réel par la station qui se trouve devant vous</p1>
@@ -68,7 +77,16 @@
             $co2=round($output_CO2);
             $myfile = fopen("/sys/class/thermal/thermal_zone0/temp", "r"); 
             $temp_core = fread($myfile,filesize("/sys/class/thermal/thermal_zone0/temp")); 
-            fclose($myfile); $temp_core = $temp_core/1000;  
+            fclose($myfile); $temp_core = $temp_core/1000;
+            
+            $output_temp = empty($output_temp) ? 0 : $output_temp;
+            $output_hum = empty($output_hum) ? 0 : $output_hum;
+            $press = empty($press) ? 0 : $press;
+            $output_temp = empty($output_temp) ? 0 : $output_temp;
+            $temp_core = empty($temp_core) ? 0 : $temp_core;
+            $output_PM1 = empty($output_PM1) ? 0 : $output_PM1;
+            $output_PM10 = empty($output_PM10) ? 0 : $output_PM10;
+            $output_PM25 = empty($output_PM25) ? 0 : $output_PM25;
 
             //Connexion to PSQL database to insert data locally
             //UPDATE: creating a new table (reponse_new) because the old one belong to postgres user and not airlab_test user
