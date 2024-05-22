@@ -29,6 +29,9 @@ sudo apt-get install python3 -y
 echo "Installing pip for Python 3..."
 sudo apt-get install python3-pip -y
 
+# package needed for psycopg2
+sudo apt-get install libpq-dev -y
+
 #Install python3 packages
 echo "Installing Python 3 packages (pip)..."
 sudo pip3 install pyserial influxdb-client psycopg2 --break-system-packages
