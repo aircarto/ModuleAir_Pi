@@ -29,9 +29,12 @@ sudo apt-get install python3 -y
 echo "Installing pip for Python 3..."
 sudo apt-get install python3-pip -y
 
+# package needed for psycopg2
+sudo apt-get install libpq-dev -y
+
 #Install python3 packages
 echo "Installing Python 3 packages (pip)..."
-sudo pip3 install pyserial influxdb-client
+sudo pip3 install pyserial influxdb-client psycopg2 --break-system-packages
 
 # Install PostgreSQL
 echo "Installing PostgreSQL..."
@@ -39,7 +42,7 @@ sudo apt-get install postgresql postgresql-contrib -y
 
 # Clone the specified Git repository to /var/www/html
 echo "Cloning Git repository to /var/www/html..."
-sudo git clone https://github.com/aircarto/ModuleAir_Pi /var/www/html
+sudo git clone https://github.com/aircarto/ModuleAir_Pi /var/www/html/ModuleAir_Pi
 
 # Restart Apache to apply changes
 echo "Restarting Apache web server..."
