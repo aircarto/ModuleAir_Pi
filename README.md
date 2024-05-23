@@ -37,6 +37,8 @@ Ces differents modules peuvent être installés avec les commandes suivantes (un
 - Docker : https://docs.docker.com/engine/install/raspberry-pi-os/
 - Postgres : sudo apt install postgresql postgresql-contrib
 - Psycopg2 : pip install psycopg2-binary
+- Netifaces : pip install netifaces
+
 
 
 ## Fichier
