@@ -9,5 +9,5 @@ pkill chromium
 sleep 5
 
 # Version fullscreen: 
-chromium-browser --start-fullscreen http://localhost --disable-pinch --no-user-gesture-required --overscroll-history-navigation=0
+chromium-browser --start-fullscreen http://localhost --disable-pinch --no-user-gesture-required --overscroll-history-navigation=0 --disable-infobars --disable-restore-session-state --noerrdialogs --incognito
 
