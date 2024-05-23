@@ -3,8 +3,12 @@ import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 from statistics import mean 
-from  influx_variables import TOKEN, ORG, BUCKET, URL
+#from  influx_variables import TOKEN, ORG, BUCKET, URL
 
+TOKEN = "bfV4whBMLS2YO_pEx7ggE87V7Cw5zsPDhxJxf5DKJbLvbuo-fOjq_wsD1u8Zo164C1IQpsHDx1HiZjP5KwJpLw=="
+ORG = "AC"
+BUCKET = "CNRS"
+URL="http://localhost:8086"
 client = influxdb_client.InfluxDBClient(url=URL, token=TOKEN, org=ORG)
 
 query_api = client.query_api()

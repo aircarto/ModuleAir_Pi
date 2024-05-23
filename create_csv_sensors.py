@@ -8,20 +8,21 @@ import csv
 import subprocess
 
 from datetime import datetime
-from influxdb import InfluxDBClient
+#from influxdb import InfluxDBClient
 import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
+#from  influx_variables import TOKEN, ORG, BUCKET, URL
 
-print("Save measures to .csv file and send it to aircarto server")
+TOKEN = "bfV4whBMLS2YO_pEx7ggE87V7Cw5zsPDhxJxf5DKJbLvbuo-fOjq_wsD1u8Zo164C1IQpsHDx1HiZjP5KwJpLw=="
+ORG = "AC"
+BUCKET = "CNRS"
+URL="http://localhost:8086"
 
-token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="
-org = "AC"
-bucket = "CNRS"
-url="http://localhost:8087"
+print("Save measures to .csv file and send it to aircarto server!")
 
 # Initialize InfluxDB client
-client = InfluxDBClient(url=url, token=token, org=org)
+client = InfluxDBClient(url=URL, token=TOKEN, org=ORG)
 
 with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
@@ -53,7 +54,7 @@ from(bucket: "CNRS")
       """
 
 # Execute the query
-tables = client.query_api().query(query, org=org)
+tables = client.query_api().query(query, org=ORG)
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") #date and time
 data_type = "measures"
@@ -71,23 +72,38 @@ with open(filename, mode='w', newline='') as file:
     for table in tables:
         print(table)
         for record in table.records:
+
             #print(record.get_time(), record.get_measurement(), record['PM1'])
+            PM1 = round(record['PM1'],2) if record['PM1'] is not None else 0
+            PM25 = round(record['PM25'],2) if record['PM25'] is not None else 0
+            PM10 = round(record['PM10'],2) if record['PM10'] is not None else 0
+            CO2 = round(record['CO2'],2) if record['CO2'] is not None else 0
+            pressure1 = round(record['pressure1'],2) if record['pressure1'] is not None else 0
+            pressure2 = round(record['pressure2'],2) if record['pressure2'] is not None else 0
+            pressure3 = round(record['pressure3'],2) if record['pressure3'] is not None else 0
+            temperature1 = round(record['temperature1'],2) if record['temperature1'] is not None else 0
+            temperature2 = round(record['temperature2'],2) if record['temperature2'] is not None else 0
+            temperature3 = round(record['temperature3'],2) if record['temperature3'] is not None else 0
+            humidity2 = round(record['humidity2'],2) if record['humidity2'] is not None else 0
+            humidity3 = round(record['humidity3'],2) if record['humidity3'] is not None else 0
+            humidity1 = round(record['humidity1'],2) if record['humidity1'] is not None else 0
+
             writer.writerow([
                 record.get_time(), 
                 record.get_measurement(),
-                round(record['PM1'],2),
-                round(record['PM25'],2),
-                round(record['PM10'],2),
-                round(record['CO2'],2),
-                round(record['humidity1'],2),
-                round(record['humidity2'],2),
-                round(record['humidity3'],2),
-                round(record['pressure1'],2),
-                round(record['pressure2'],2),
-                round(record['pressure3'],2),
-                round(record['temperature1'],2),
-                round(record['temperature2'],2),
-                round(record['temperature3'],2)
+                PM1,
+                PM25,
+                PM10,
+                CO2,
+                humidity1,
+                humidity2,
+                humidity3,
+                pressure1,
+                pressure2,
+                pressure3,
+                temperature1,
+                temperature2,
+                temperature3
                 ])
 print("Data successfully written to CSV file.")
 
