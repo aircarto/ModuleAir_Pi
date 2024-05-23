@@ -1,0 +1,4 @@
+TOKEN = "TOKEN"
+ORG = "ORG"
+BUCKET = "BUCKET"
+URL="http://localhost:8087"
