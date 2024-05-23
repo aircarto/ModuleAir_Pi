@@ -104,6 +104,8 @@ Pour l'affichage en full screen de chromium:
 The issue is that since Raspberry Bookworm there is a new desktop manager Wayland. This doesn't seem to work that well yet.
 I switched the config from Wayland to X11 (sudo raspi-config / 6 Advanced Options / A6 Wayland / W1 X11), rebooted and used the old kiosk configuration.
 
+Pour désactiver le sleep mode:
+Run the raspi-config tool with the following command, Navigate to "Display Options". Select "Screen Blanking" and set it to "Disabled".
 
 ## SQL database
 
