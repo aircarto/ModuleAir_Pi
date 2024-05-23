@@ -57,10 +57,18 @@
         }
 
         function submitAnswer() {
+
+            var button = document.getElementById('nextButton');
+            button.disabled = true; 
+            button.style.opacity = '0.6'; 
+
             if (!r17) {
                 alert('Veuillez sélectionner une option.');
+                button.disabled = false; 
+                button.style.opacity = '1'; 
                 return;
             }
+
             const urlParams = new URLSearchParams(window.location.search);
             urlParams.set('r17', r17);
             window.location.href = `../reponse.php?${urlParams.toString()}`;
