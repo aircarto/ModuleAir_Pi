@@ -12,7 +12,12 @@ from datetime import datetime
 import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
-from  influx_variables import TOKEN, ORG, BUCKET, URL
+#from  influx_variables import TOKEN, ORG, BUCKET, URL
+
+TOKEN = "bfV4whBMLS2YO_pEx7ggE87V7Cw5zsPDhxJxf5DKJbLvbuo-fOjq_wsD1u8Zo164C1IQpsHDx1HiZjP5KwJpLw=="
+ORG = "AC"
+BUCKET = "CNRS"
+URL="http://localhost:8086"
 
 print("Save measures to .csv file and send it to aircarto server")
 
