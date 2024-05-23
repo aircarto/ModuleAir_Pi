@@ -1,5 +1,6 @@
 #!/bin/bash
+echo "Running git pull shell script (wait)"
 sleep 60
-echo "Running git pull shell script"
+echo "start"
 cd /var/www/html/ModuleAir_Pi || exit
 git pull
