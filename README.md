@@ -66,6 +66,7 @@ Remarque : Le fichier crontab (accessible via la commande crontab -e) doit être
 0 9 * * * python /var/www/html/ModuleAir_Pi/csv_files/create_csv_reponses.py >> /var/www/html/ModuleAir_Pi/logs/app.log 2>&1
 @reboot /var/www/html/ModuleAir_Pi/app.sh
 @reboot sudo php /var/www/html/ModuleAir_Pi/global.php
+@reboot sudo /var/www/html/ModuleAir_Pi/git_pull.sh
 
 ```
 
