@@ -72,23 +72,38 @@ with open(filename, mode='w', newline='') as file:
     for table in tables:
         print(table)
         for record in table.records:
+
             #print(record.get_time(), record.get_measurement(), record['PM1'])
+            PM1 = round(record['PM1'],2) if record['PM1'] is not None else 0
+            PM25 = round(record['PM25'],2) if record['PM25'] is not None else 0
+            PM10 = round(record['PM10'],2) if record['PM10'] is not None else 0
+            CO2 = round(record['CO2'],2) if record['CO2'] is not None else 0
+            pressure1 = round(record['pressure1'],2) if record['pressure1'] is not None else 0
+            pressure2 = round(record['pressure2'],2) if record['pressure2'] is not None else 0
+            pressure3 = round(record['pressure3'],2) if record['pressure3'] is not None else 0
+            temperature1 = round(record['temperature1'],2) if record['temperature1'] is not None else 0
+            temperature2 = round(record['temperature2'],2) if record['temperature2'] is not None else 0
+            temperature3 = round(record['temperature3'],2) if record['temperature3'] is not None else 0
+            humidity2 = round(record['humidity2'],2) if record['humidity2'] is not None else 0
+            humidity3 = round(record['humidity3'],2) if record['humidity3'] is not None else 0
+            humidity1 = round(record['humidity1'],2) if record['humidity1'] is not None else 0
+
             writer.writerow([
                 record.get_time(), 
                 record.get_measurement(),
-                round(record['PM1'],2),
-                round(record['PM25'],2),
-                round(record['PM10'],2),
-                round(record['CO2'],2),
-                round(record['humidity1'],2),
-                round(record['humidity2'],2),
-                round(record['humidity3'],2),
-                round(record['pressure1'],2),
-                round(record['pressure2'],2),
-                round(record['pressure3'],2),
-                round(record['temperature1'],2),
-                round(record['temperature2'],2),
-                round(record['temperature3'],2)
+                PM1,
+                PM25,
+                PM10,
+                CO2,
+                humidity1,
+                humidity2,
+                humidity3,
+                pressure1,
+                pressure2,
+                pressure3,
+                temperature1,
+                temperature2,
+                temperature3
                 ])
 print("Data successfully written to CSV file.")
 
