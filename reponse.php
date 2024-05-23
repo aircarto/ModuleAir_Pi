@@ -61,6 +61,8 @@
             <img src="/Images/QR.png" alt="QR Code pour le projet Crocus">
             <?php $pythonscript_CO2 = "Read_data_CO2.py"; $output_CO2 = shell_exec('python ' . $pythonscript_CO2 );?>
             <?php $pythonscript_press = "Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); ?>
+            <?php $pythonscript_addrw = "addr_mac_wifi.py"; $output_addrw = shell_exec('python ' . $pythonscript_addrw ); ?>
+            <?php $pythonscript_addr = "addr_mac.py"; $output_addr = shell_exec('python ' . $pythonscript_addr ); ?>
             <?php 
             
             //GET PM data (ATTENTION output String not Float)
@@ -95,7 +97,7 @@
                 temperature, humidity, date_reponse, pressure, device_id, temprature_core, pm1, pm25, pm10, sexe,
                 r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, co2) VALUES (
                 '$output_temp', '$output_hum', '$fullDate', '$press', '".DEVICE_ID."', '$temp_core', '$output_PM1', '$output_PM25', '$output_PM10', '$reponseSexe', 
-                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$r29', '$r30','$co2'
+                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$output_addr', '$output_addrw','$co2'
             )"; 
             $result = pg_query($conn, $query); pg_close($conn); 
 
@@ -142,8 +144,8 @@
                 'r26' => $r26,
                 'r27' => $r27,
                 'r28' => $r28,
-                'r29' => $r29,
-                'r30' => $r30
+                'r29' => $output_addr,
+                'r30' => $output_addrw
             );
             //$data_CNRS = json_encode($data_CNRS);
             $client = new \GuzzleHttp\Client();   
