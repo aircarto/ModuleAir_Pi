@@ -19,7 +19,7 @@ ORG = "AC"
 BUCKET = "CNRS"
 URL="http://localhost:8086"
 
-print("Save measures to .csv file and send it to aircarto server")
+print("Save measures to .csv file and send it to aircarto server!")
 
 # Initialize InfluxDB client
 client = InfluxDBClient(url=URL, token=TOKEN, org=ORG)
