@@ -4,3 +4,5 @@ logs/
 global.php
 device_id.txt
 influx_variables.py
+csv_files/influx_variables.py
+csv_files/CNRS*
