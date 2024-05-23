@@ -8,20 +8,16 @@ import csv
 import subprocess
 
 from datetime import datetime
-from influxdb import InfluxDBClient
+#from influxdb import InfluxDBClient
 import influxdb_client, os, time
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
+from  influx_variables import TOKEN, ORG, BUCKET, URL
 
 print("Save measures to .csv file and send it to aircarto server")
 
-token = "BzPrvA1UzNPbDMC0iIgiVZ_XjKBswuYC1cfrG2_anGXU9b4cwDnpS6pAz_ToOpgYSlBl1O7C3VWgFFXX5x9cEA=="
-org = "AC"
-bucket = "CNRS"
-url="http://localhost:8087"
-
 # Initialize InfluxDB client
-client = InfluxDBClient(url=url, token=token, org=org)
+client = InfluxDBClient(url=URL, token=TOKEN, org=ORG)
 
 with open('/var/www/html/ModuleAir_Pi/device_id.txt', 'r') as file:
    name = file.read().strip()
@@ -53,7 +49,7 @@ from(bucket: "CNRS")
       """
 
 # Execute the query
-tables = client.query_api().query(query, org=org)
+tables = client.query_api().query(query, org=ORG)
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S") #date and time
 data_type = "measures"
