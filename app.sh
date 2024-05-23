@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sleep 15
+sleep 120
 
 export DISPLAY=:0
 
