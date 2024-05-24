@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chmod +x /var/www/html/ModuleAir_Pi/git_pull.sh
+
 sleep 120
 
 export DISPLAY=:0
