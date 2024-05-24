@@ -304,7 +304,7 @@ p1 {
 p3 {
     text-align: center;   
     word-wrap: break-word; 
-    padding: 10px 120px;
+    padding: 10px 100px;
     font-size: 35px;         
 }
 
@@ -321,7 +321,7 @@ p3 {
     margin-bottom: 5px; 
 }
 .keyboard-container {
-    max-width: 800px; 
+    max-width: 1000px; 
     margin: auto; 
 }
 textarea {
