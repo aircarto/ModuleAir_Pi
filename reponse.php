@@ -10,49 +10,6 @@
 <div class="response-container">
         <h2>Grazas polo teu tempo !</h2>
         <link rel="stylesheet" href="../styles.css">
-        <?php
-
-                $reponseSexe = isset($_GET['reponseSexe']) ? $_GET['reponseSexe'] : 'Non_specifie';
-                $r1 = isset($_GET['r1']) ? $_GET['r1'] : 'Non_specifie';
-                $r2 = isset($_GET['r2']) ? $_GET['r2'] : 'Non_specifie';
-                $r3 = isset($_GET['r3']) ? $_GET['r3'] : 'Non_specifie';
-                $r4 = isset($_GET['r4']) ? $_GET['r4'] : 'Non_specifie';
-                $r5 = isset($_GET['r5']) ? $_GET['r5'] : 'Non_specifie';
-                $r6 = isset($_GET['r6']) ? $_GET['r6'] : 'Non_specifie';
-                $r7 = isset($_GET['r7']) ? $_GET['r7'] : 'Non_specifie';
-                $r8 = isset($_GET['r8']) ? $_GET['r8'] : 'Non_specifie';
-                $r9 = isset($_GET['r9']) ? $_GET['r9'] : 'Non_specifie';
-                $r10 = isset($_GET['r10']) ? $_GET['r10'] : 'Non_specifie';
-                $r10 = isset($_GET['r10']) ? $_GET['r10'] : 'Non_specifie';
-                $r11 = isset($_GET['r11']) ? $_GET['r11'] : 'Non_specifie';
-                $r12 = isset($_GET['r12']) ? $_GET['r12'] : 'Non_specifie';
-                $r13 = isset($_GET['r13']) ? $_GET['r13'] : 'Non_specifie';
-                $r14 = isset($_GET['r14']) ? $_GET['r14'] : 'Non_specifie';
-                $r15 = isset($_GET['r15']) ? $_GET['r15'] : 'Non_specifie';
-                $r16 = isset($_GET['r16']) ? $_GET['r16'] : 'Non_specifie';
-                $r17 = isset($_GET['r17']) ? $_GET['r17'] : 'Non_specifie';
-                $r18 = isset($_GET['r18']) ? $_GET['r18'] : 'Non_specifie';
-                $r19 = isset($_GET['r19']) ? $_GET['r19'] : 'Non_specifie';
-                $r20 = isset($_GET['r20']) ? $_GET['r20'] : 'Non_specifie';
-                $r21 = isset($_GET['r21']) ? $_GET['r21'] : 'Non_specifie';
-                $r22 = isset($_GET['r22']) ? $_GET['r22'] : 'Non_specifie';
-                $r23 = isset($_GET['r23']) ? $_GET['r23'] : 'Non_specifie';
-                $r24 = isset($_GET['r24']) ? $_GET['r24'] : 'Non_specifie';
-                $r25 = isset($_GET['r25']) ? $_GET['r25'] : 'Non_specifie';
-                $r26 = isset($_GET['r26']) ? $_GET['r26'] : 'Non_specifie';
-                $r27 = isset($_GET['r27']) ? $_GET['r27'] : 'Non_specifie';
-                $r28 = isset($_GET['r28']) ? $_GET['r28'] : 'Non_specifie';
-                $r29 = isset($_GET['r29']) ? $_GET['r29'] : 'Non_specifie'; 
-                $r30 = isset($_GET['r30']) ? $_GET['r30'] : 'Non_specifie';
-                
-                $output_temp=0;
-                $output_hum=0;
-                $press=0;
-                $temp_core=0;
-                $output_PM1=0;
-                $output_PM25=0;
-                $output_PM10=0;
-                ?>
             <p1>As túas respostas son valiosas para comprender mellor o confort térmico dos usuarios desta biblioteca. 
             Se queres saber máis sobre o proxecto Crocus, escanea o código QR a continuación. Esta é a temperatura e humidade medida en tempo real pola estación fronte a ti.</p1>
             <p1>Temperatura : <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; // attention STRING not FLOAT ?> °C</p1>
@@ -62,6 +19,50 @@
             <?php $pythonscript_press = "Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); ?>
             <?php $pythonscript_addrw = "addr_mac_wifi.py"; $output_addrw = shell_exec('python ' . $pythonscript_addrw ); ?>
             <?php $pythonscript_addr = "addr_mac.py"; $output_addr = shell_exec('python ' . $pythonscript_addr ); ?>
+
+            <?php
+
+$reponseSexe = isset($_GET['reponseSexe']) ? $_GET['reponseSexe'] : 'Non_specifie';
+$r1 = isset($_GET['r1']) ? $_GET['r1'] : 'Non_specifie';
+$r2 = isset($_GET['r2']) ? $_GET['r2'] : 'Non_specifie';
+$r3 = isset($_GET['r3']) ? $_GET['r3'] : 'Non_specifie';
+$r4 = isset($_GET['r4']) ? $_GET['r4'] : 'Non_specifie';
+$r5 = isset($_GET['r5']) ? $_GET['r5'] : 'Non_specifie';
+$r6 = isset($_GET['r6']) ? $_GET['r6'] : 'Non_specifie';
+$r7 = isset($_GET['r7']) ? $_GET['r7'] : 'Non_specifie';
+$r8 = isset($_GET['r8']) ? $_GET['r8'] : 'Non_specifie';
+$r9 = isset($_GET['r9']) ? $_GET['r9'] : 'Non_specifie';
+$r10 = isset($_GET['r10']) ? $_GET['r10'] : 'Non_specifie';
+$r10 = isset($_GET['r10']) ? $_GET['r10'] : 'Non_specifie';
+$r11 = isset($_GET['r11']) ? $_GET['r11'] : 'Non_specifie';
+$r12 = isset($_GET['r12']) ? $_GET['r12'] : 'Non_specifie';
+$r13 = isset($_GET['r13']) ? $_GET['r13'] : 'Non_specifie';
+$r14 = isset($_GET['r14']) ? $_GET['r14'] : 'Non_specifie';
+$r15 = isset($_GET['r15']) ? $_GET['r15'] : 'Non_specifie';
+$r16 = isset($_GET['r16']) ? $_GET['r16'] : 'Non_specifie';
+$r17 = isset($_GET['r17']) ? $_GET['r17'] : 'Non_specifie';
+$r18 = isset($_GET['r18']) ? $_GET['r18'] : 'Non_specifie';
+$r19 = isset($_GET['r19']) ? $_GET['r19'] : 'Non_specifie';
+$r20 = isset($_GET['r20']) ? $_GET['r20'] : 'Non_specifie';
+$r21 = isset($_GET['r21']) ? $_GET['r21'] : 'Non_specifie';
+$r22 = isset($_GET['r22']) ? $_GET['r22'] : 'Non_specifie';
+$r23 = isset($_GET['r23']) ? $_GET['r23'] : 'Non_specifie';
+$r24 = isset($_GET['r24']) ? $_GET['r24'] : 'Non_specifie';
+$r25 = isset($_GET['r25']) ? $_GET['r25'] : 'Non_specifie';
+$r26 = isset($_GET['r26']) ? $_GET['r26'] : 'Non_specifie';
+$r27 = isset($_GET['r27']) ? $_GET['r27'] : 'Non_specifie';
+$r28 = isset($_GET['r28']) ? $_GET['r28'] : 'Non_specifie';
+$r29 = isset($_GET['r29']) ? $_GET['r29'] : 'Non_specifie'; 
+$r30 = isset($_GET['r30']) ? $_GET['r30'] : 'Non_specifie';
+
+$output_temp=0;
+$output_hum=0;
+$press=0;
+$temp_core=0;
+$output_PM1=0;
+$output_PM25=0;
+$output_PM10=0;
+?>
             <?php 
             
             //GET PM data (ATTENTION output String not Float)
