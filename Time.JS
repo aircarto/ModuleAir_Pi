@@ -3,8 +3,8 @@ function afficherFenetreModale() {;
     modal.className = 'modal';
     modal.innerHTML = `
         <div class="modal-content">
-            <p>Souhaitez-vous continuer le questionnaire?</p>
-            <button onclick="continuerQuestionnaire()">Oui</button>
+            <p>Queres continuar co cuestionario?</p>
+            <button onclick="continuerQuestionnaire()">Si</button>
             <button onclick="retourAccueil()">Non</button>
         </div>
     `;

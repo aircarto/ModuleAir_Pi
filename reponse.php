@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="response-container">
-        <h2>Merci pour vos réponses</h2>
+        <h2>Grazas polo teu tempo !</h2>
         <link rel="stylesheet" href="../styles.css">
         <?php
 
@@ -53,11 +53,10 @@
                 $output_PM25=0;
                 $output_PM10=0;
                 ?>
-            <p1>Vos réponses sont précieuses et nous seront très utiles pour mieux comprendre le confort thermique des usagers de cette bibliothèque.
-                Si vous voulez en savoir sur plus le projet Crocus, scannez le QR code ci dessous. 
-                Pour vous remercier, vous trouverez ci dessous la température et l’humidité mesurés en temps réel par la station qui se trouve devant vous</p1>
-            <p1>La temperature est de <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; // attention STRING not FLOAT ?> °C</p1>
-            <p1>Le taux d'humidité est de <?php $pythonscript_hum = "Read_data_hum.py"; $output_hum = shell_exec('python ' . $pythonscript_hum ); echo $output_hum; // attention STRING not FLOAT?> %</p1>
+            <p1>As túas respostas son valiosas para comprender mellor o confort térmico dos usuarios desta biblioteca. 
+            Se queres saber máis sobre o proxecto Crocus, escanea o código QR a continuación. Esta é a temperatura e humidade medida en tempo real pola estación fronte a ti.</p1>
+            <p1>Temperatura : <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; // attention STRING not FLOAT ?> °C</p1>
+            <p1>Humidade : <?php $pythonscript_hum = "Read_data_hum.py"; $output_hum = shell_exec('python ' . $pythonscript_hum ); echo $output_hum; // attention STRING not FLOAT?> %</p1>
             <img src="/Images/QR.png" alt="QR Code pour le projet Crocus">
             <?php $pythonscript_CO2 = "Read_data_CO2.py"; $output_CO2 = shell_exec('python ' . $pythonscript_CO2 );?>
             <?php $pythonscript_press = "Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); ?>
