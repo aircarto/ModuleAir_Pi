@@ -309,9 +309,9 @@ p3 {
 }
 
 .keyboard-button {
-    padding: 8px 18px; 
-    font-size: 18px; 
-    margin: 3px; 
+    padding: 20px 30px; 
+    font-size: 25px; 
+    margin: 0px; 
     background-color: #f0f0f0; 
     border: none; 
     border-radius: 5px; 
@@ -321,7 +321,7 @@ p3 {
     margin-bottom: 5px; 
 }
 .keyboard-container {
-    max-width: 600px; 
+    max-width: 800px; 
     margin: auto; 
 }
 textarea {
