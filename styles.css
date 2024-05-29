@@ -61,7 +61,7 @@ h2 {
 }
 
 .response-button1 { 
-    width: 500px;  /* Largeur fixe du bouton */
+    width: 500px;  
     height: 60px;
     padding: 10px 30px;
     font-size: 20px;
@@ -74,6 +74,23 @@ h2 {
     transition: background-color 0.3s;
     text-align: center;
 }
+
+.response-button4 { 
+    width: 500px;  
+    height: 45px;
+    padding: 5px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 1px;
+    margin: 2px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+
 
 .response-button2 {
     padding: 25px 30px;
@@ -93,6 +110,10 @@ h2 {
 }
 
 .response-button1.selected {
+    background-color: #06b300; 
+}
+
+.response-button4.selected {
     background-color: #06b300; 
 }
 
@@ -203,11 +224,11 @@ h2 {
 }
 
 .button-container2 {
-    margin-top: 10px;  /* Définit une marge supérieure */
+    margin-top: 10px;  
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Centrer les boutons horizontalement */
-    margin-bottom: 10px;  /* Définit une marge inférieure */
+    align-items: center;  
+    margin-bottom: 10px; 
 }
 
 

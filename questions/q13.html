@@ -30,21 +30,21 @@
         <form onsubmit="return false;">
             <h2>Neste preciso momento, dirías que a biblioteca está...</h2>
             <div class="button-container1">
-                <button class="response-button1" data-value="tres_chaud" onclick="selectOption('r11', 'tres_chaud')">Moi quente</button>
-                <button class="response-button1" data-value="chaud" onclick="selectOption('r11', 'chaud')">Quente</button>
-                <button class="response-button1" data-value="legerement_chaud" onclick="selectOption('r11', 'legerement_chaud')">Levemente quente</button>
-                <button class="response-button1" data-value="ni_chaud_ni_froid" onclick="selectOption('r11', 'ni_chaud_ni_froid')">Nin quente, nin fría</button>
-                <button class="response-button1" data-value="legerement_froid" onclick="selectOption('r11', 'legerement_froid')">Levemente fría</button>
-                <button class="response-button1" data-value="froid" onclick="selectOption('r11', 'froid')">Fría</button>
-                <button class="response-button1" data-value="tres_froid" onclick="selectOption('r11', 'tres_froid')">Moi fría</button>
+                <button class="response-button4" data-value="tres_chaud" onclick="selectOption('r11', 'tres_chaud')">Moi quente</button>
+                <button class="response-button4" data-value="chaud" onclick="selectOption('r11', 'chaud')">Quente</button>
+                <button class="response-button4" data-value="legerement_chaud" onclick="selectOption('r11', 'legerement_chaud')">Levemente quente</button>
+                <button class="response-button4" data-value="ni_chaud_ni_froid" onclick="selectOption('r11', 'ni_chaud_ni_froid')">Nin quente, nin fría</button>
+                <button class="response-button4" data-value="legerement_froid" onclick="selectOption('r11', 'legerement_froid')">Levemente fría</button>
+                <button class="response-button4" data-value="froid" onclick="selectOption('r11', 'froid')">Fría</button>
+                <button class="response-button4" data-value="tres_froid" onclick="selectOption('r11', 'tres_froid')">Moi fría</button>
             </div>
             <h2>Agora mesmo o ambiente térmico da biblioteca paréceche...</h2>
             <div class="button-container2">
-                <button class="response-button1" data-value="tres_confortable" onclick="selectOption('r10', 'tres_confortable')">Moi cómodo</button>
-                <button class="response-button1" data-value="confortable" onclick="selectOption('r10', 'confortable')">Cómodo</button>
-                <button class="response-button1" data-value="inconfortable" onclick="selectOption('r10', 'inconfortable')">Incómodo</button>
-                <button class="response-button1" data-value="tres_inconfortable" onclick="selectOption('r10', 'tres_inconfortable')">Moi incómodo</button>
-                <button class="response-button1" data-value="extremement_inconfortable" onclick="selectOption('r10', 'extremement_inconfortable')">Extremadamente incómodo</button>
+                <button class="response-button4" data-value="tres_confortable" onclick="selectOption('r10', 'tres_confortable')">Moi cómodo</button>
+                <button class="response-button4" data-value="confortable" onclick="selectOption('r10', 'confortable')">Cómodo</button>
+                <button class="response-button4" data-value="inconfortable" onclick="selectOption('r10', 'inconfortable')">Incómodo</button>
+                <button class="response-button4" data-value="tres_inconfortable" onclick="selectOption('r10', 'tres_inconfortable')">Moi incómodo</button>
+                <button class="response-button4" data-value="extremement_inconfortable" onclick="selectOption('r10', 'extremement_inconfortable')">Extremadamente incómodo</button>
             </div>
 
             <div class="next-container">    
@@ -60,7 +60,7 @@
 
         function selectOption(category, value) {
             selections[category] = value;
-            const buttons = document.querySelectorAll(`.response-button1[data-value][onclick*='${category}']`);
+            const buttons = document.querySelectorAll(`.response-button4[data-value][onclick*='${category}']`);
             buttons.forEach(button => {
                 button.classList.remove('selected');
                 if (button.getAttribute('data-value') === value) {

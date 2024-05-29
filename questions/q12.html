@@ -30,17 +30,17 @@
         <form onsubmit="return false;">
             <h2>Cal é o teu sexo ?</h2>
             <div class="button-container2">
-                <button class="response-button1" data-value="homme" onclick="selectOption('sexe', 'homme')">Home</button>
-                <button class="response-button1" data-value="femme" onclick="selectOption('sexe', 'femme')">Muller</button>
-                <button class="response-button1" data-value="non_binaire" onclick="selectOption('sexe', 'non_binaire')">Non binario</button>
+                <button class="response-button4" data-value="homme" onclick="selectOption('sexe', 'homme')">Home</button>
+                <button class="response-button4" data-value="femme" onclick="selectOption('sexe', 'femme')">Muller</button>
+                <button class="response-button4" data-value="non_binaire" onclick="selectOption('sexe', 'non_binaire')">Non binario</button>
             </div>
             <h2>Cal é a túa faixa de idade ?</h2>
             <div class="button-container2">
-                <button class="response-button1" data-value="moins_de_15" onclick="selectOption('r9', 'moins_de_15')">Menos de 15 anos</button>
-                <button class="response-button1" data-value="15_29" onclick="selectOption('r9', '15_29')">15 - 29 anos</button>
-                <button class="response-button1" data-value="30_44" onclick="selectOption('r9', '30_44')">30 - 44 anos</button>
-                <button class="response-button1" data-value="45_60" onclick="selectOption('r9', '45_60')">45 - 60 anos</button>
-                <button class="response-button1" data-value="plus_de_60" onclick="selectOption('r9', 'plus_de_60')">Máis de 60 anos</button>
+                <button class="response-button4" data-value="moins_de_15" onclick="selectOption('r9', 'moins_de_15')">Menos de 15 anos</button>
+                <button class="response-button4" data-value="15_29" onclick="selectOption('r9', '15_29')">15 - 29 anos</button>
+                <button class="response-button4" data-value="30_44" onclick="selectOption('r9', '30_44')">30 - 44 anos</button>
+                <button class="response-button4" data-value="45_60" onclick="selectOption('r9', '45_60')">45 - 60 anos</button>
+                <button class="response-button4" data-value="plus_de_60" onclick="selectOption('r9', 'plus_de_60')">Máis de 60 anos</button>
             </div>
 
             <div class="next-container">    
@@ -56,7 +56,7 @@
 
         function selectOption(category, value) {
             selections[category] = value;
-            const buttons = document.querySelectorAll(`.response-button1[data-value][onclick*="${category}"]`);
+            const buttons = document.querySelectorAll(`.response-button4[data-value][onclick*="${category}"]`);
             buttons.forEach(button => {
                 button.classList.remove('selected');
                 if (button.getAttribute('data-value') === value) {
