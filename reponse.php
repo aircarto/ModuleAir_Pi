@@ -167,7 +167,7 @@ $output_PM10=0;
         </p>
 
   <div class="response-container">
-    <a href="index.html" class="next-button">J'ai terminé !</a>
+    <a href="index.html" class="next-button">Rematou !</a>
   </div>
 
     <script>
