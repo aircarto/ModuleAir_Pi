@@ -60,7 +60,9 @@ h2 {
     display: inline-block;
 }
 
-.response-button1 {
+.response-button1 { 
+    width: 500px;  /* Largeur fixe du bouton */
+    height: 60px;
     padding: 10px 30px;
     font-size: 20px;
     border: none;
@@ -190,11 +192,10 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
-    margin: 20px 0;
 }
 
 .button-container {
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
@@ -202,12 +203,13 @@ h2 {
 }
 
 .button-container2 {
-    margin-top: 40px;
+    margin-top: 10px;  /* Définit une marge supérieure */
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    margin: 10px 0;
+    align-items: center;  /* Centrer les boutons horizontalement */
+    margin-bottom: 10px;  /* Définit une marge inférieure */
 }
+
 
 button.large {
     font-size: 45px;

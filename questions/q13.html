@@ -29,7 +29,7 @@
     <div class="response-container">
         <form onsubmit="return false;">
             <h2>Neste preciso momento, dirías que a biblioteca está...</h2>
-            <div class="button-container">
+            <div class="button-container1">
                 <button class="response-button1" data-value="tres_chaud" onclick="selectOption('r11', 'tres_chaud')">Moi quente</button>
                 <button class="response-button1" data-value="chaud" onclick="selectOption('r11', 'chaud')">Quente</button>
                 <button class="response-button1" data-value="legerement_chaud" onclick="selectOption('r11', 'legerement_chaud')">Levemente quente</button>
@@ -39,7 +39,7 @@
                 <button class="response-button1" data-value="tres_froid" onclick="selectOption('r11', 'tres_froid')">Moi fría</button>
             </div>
             <h2>Agora mesmo o ambiente térmico da biblioteca paréceche...</h2>
-            <div class="button-container">
+            <div class="button-container2">
                 <button class="response-button1" data-value="tres_confortable" onclick="selectOption('r10', 'tres_confortable')">Moi cómodo</button>
                 <button class="response-button1" data-value="confortable" onclick="selectOption('r10', 'confortable')">Cómodo</button>
                 <button class="response-button1" data-value="inconfortable" onclick="selectOption('r10', 'inconfortable')">Incómodo</button>
@@ -70,7 +70,7 @@
         }
         function submitAnswers() {
             if (!selections.r10 || !selections.r11) {
-                alert('Veuillez sélectionner toutes les options.');
+                alert('Elixa unha opción');
                 return;
             }
             const urlParams = new URLSearchParams(window.location.search);

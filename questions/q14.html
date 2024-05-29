@@ -45,7 +45,7 @@
                 </div>
             </div>
             <h2>Iso paréceche</h2>
-            <div class="button-container2">
+            <div class="button-container1">
                 <button class="response-button1" data-value="tres_confortable" onclick="selectOption('r14', 'tres_confortable')">Moi confortable</button>
                 <button class="response-button1" data-value="confortable" onclick="selectOption('r14', 'confortable')">Confortable</button>
                 <button class="response-button1" data-value="inconfortable" onclick="selectOption('r14', 'inconfortable')">Pouco confortable</button>
@@ -94,15 +94,15 @@
 
     function submitAnswers() {
         if (!selections.r12) {
-            alert('Veuillez indiquer si vous ressentez des courants d\'air.');
+            alert('Elixa unha opción');
             return;
         }
         if (selections.r12 === 'oui' && selections.r13.length === 0) {
-            alert('Veuillez spécifier où vous ressentez des courants d\'air.');
+            alert('Elixa unha opción');
             return;
         }
         if (!selections.r14) {
-            alert('Veuillez indiquer votre niveau de confort.');
+            alert('Elixa unha opción');
             return;
         }
         const urlParams = new URLSearchParams(window.location.search);

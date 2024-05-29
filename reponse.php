@@ -14,7 +14,7 @@
             Se queres saber máis sobre o proxecto Crocus, escanea o código QR a continuación. Esta é a temperatura e humidade medida en tempo real pola estación fronte a ti.</p1>
             <p1>Temperatura : <?php $pythonscript_temp = "Read_data_temp.py"; $output_temp = shell_exec('python ' . $pythonscript_temp ); echo $output_temp; // attention STRING not FLOAT ?> °C</p1>
             <p1>Humidade : <?php $pythonscript_hum = "Read_data_hum.py"; $output_hum = shell_exec('python ' . $pythonscript_hum ); echo $output_hum; // attention STRING not FLOAT?> %</p1>
-            <img src="/Images/QR.png" alt="QR Code pour le projet Crocus">
+            <img src="/Images/Crocus.png" alt="QR Code pour le projet Crocus" style="width: 25%;>
             <?php $pythonscript_CO2 = "Read_data_CO2.py"; $output_CO2 = shell_exec('python ' . $pythonscript_CO2 );?>
             <?php $pythonscript_press = "Read_data_press.py"; $output_press = shell_exec('python ' . $pythonscript_press ); ?>
             <?php $pythonscript_addrw = "addr_mac_wifi.py"; $output_addrw = shell_exec('python ' . $pythonscript_addrw ); ?>
@@ -97,7 +97,8 @@ $output_PM10=0;
                 temperature, humidity, date_reponse, pressure, device_id, temprature_core, pm1, pm25, pm10, sexe,
                 r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20, r21, r22, r23, r24, r25, r26, r27, r28, r29, r30, co2) VALUES (
                 '$output_temp', '$output_hum', '$fullDate', '$press', '".DEVICE_ID."', '$temp_core', '$output_PM1', '$output_PM25', '$output_PM10', '$reponseSexe', 
-                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$output_addr', '$output_addrw','$co2'
+                '$r1', '$r2', '$r3', '$r4', '$r5', '$r6', '$r7', '$r8', '$r9', '$r10', '$r11', '$r12', '$r13', '$r14', '$r15', '$r16', '$r17', '$r18', '$r19', '$r20', 
+                '$r21', '$r22', '$r23', '$r24', '$r25', '$r26', '$r27', '$r28', '$output_addr', '$output_addrw','$co2'
             )"; 
             $result = pg_query($conn, $query); pg_close($conn); 
 
@@ -167,7 +168,7 @@ $output_PM10=0;
         </p>
 
   <div class="response-container">
-    <a href="index.html" class="next-button">Rematou !</a>
+    <a href="index.html" class="next-button">Xa terminei !</a>
   </div>
 
     <script>

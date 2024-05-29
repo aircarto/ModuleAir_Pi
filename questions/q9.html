@@ -29,7 +29,7 @@
     <div class="response-container">
         <h2>Como definirías a biblioteca se tiveses que permanecer nela durante varias horas ?  </h2>
         <form onsubmit="return false;">
-            
+            <div class="question">
             <div class="button-container2">
                 <button class="response-button1" data-value="tres_confortable" onclick="selectOption('tres_confortable')">Moi cómoda</button>
                 <button class="response-button1" data-value="confortable" onclick="selectOption('confortable')">Cómoda</button>
@@ -37,7 +37,7 @@
                 <button class="response-button1" data-value="tres_inconfortable" onclick="selectOption('tres_inconfortable')">Moi incómoda</button>
                 <button class="response-button1" data-value="extremement_inconfortable" onclick="selectOption('extremement_inconfortable')">Extremadamente incómoda</button>
             </div>
-
+        </div>
             <div class="next-container">    
                 <button id="nextButton" class="next-button" onclick="submitAnswer()">Seguir</button>
                 <button class="back-button" onclick="window.history.back()">Volver</button>
@@ -62,7 +62,7 @@
 
         function submitAnswer() {
             if (r6 === '') {
-                alert('Veuillez sélectionner une option.');
+                alert('Elixa unha opción');
                 return;
             }
             const urlParams = new URLSearchParams(window.location.search);
