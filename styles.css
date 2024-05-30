@@ -76,8 +76,8 @@ h2 {
 }
 
 .response-button4 { 
-    width: 500px;  
-    height: 45px;
+    width: 450px;  
+    height: 35px;
     padding: 5px 20px;
     font-size: 15px;
     border: none;
@@ -184,7 +184,8 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    min-height: 100vh; 
+    min-height: 100vh;
+    margin: 0px 200px; 
 }
 
 .response-container2 {
